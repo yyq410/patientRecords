@@ -1,0 +1,9 @@
+<%= link_to "录入病历", "#" %>
+
+<% content_for :side_bar do %>
+<h2>医生信息</h2>
+<h3><%= label_tag("姓名：") %><br/></h3>
+<%= @doctor.name %><br/>
+<h3><%= label_tag("邮箱")%><br/></h3>
+<%= @doctor.email %><br/>
+<% end %>

@@ -1,1 +1,24 @@
-welcome~
+<p>欢迎使用PatientRecords, 方便医生录入、管理和分析病历~</p>
+<% content_for :side_bar do %>
+    <% if logged_in? %>
+        <h3><%= @current_doctor.name %></h3>
+        <%= link_to "个人信息", doctor_path(@current_doctor)%>
+        <%= link_to "退出", logout_path, method:"delete" %>
+    <% else %>
+
+        <%= form_for(:session, url: login_path) do |f|%>
+            <div class="form-group">
+            <%= f.label :name, "用户名"%>
+            <%= f.text_field :name, class:"form-control" %>
+            </div>
+            <div class="form-group">
+            <%= f.label :password, "密码"%>
+            <%= f.password_field :password, class: "form-control"%>
+            </div>
+            
+            <%= f.submit "登录", class: "btn btn-primary"%>
+        <% end %>
+        <%= link_to "注册医生账号", new_doctor_path %>
+         
+    <%end %>
+<% end %>

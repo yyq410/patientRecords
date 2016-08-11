@@ -1,0 +1,19 @@
+current directory: /home/yyq/ruby_project/patientRecords/vendor/bundle/ruby/2.3.0/gems/byebug-9.0.5/ext/byebug
+/usr/local/bin/ruby -r ./siteconf20160811-38520-16xl1sj.rb extconf.rb
+creating Makefile
+
+current directory: /home/yyq/ruby_project/patientRecords/vendor/bundle/ruby/2.3.0/gems/byebug-9.0.5/ext/byebug
+make "DESTDIR=" clean
+
+current directory: /home/yyq/ruby_project/patientRecords/vendor/bundle/ruby/2.3.0/gems/byebug-9.0.5/ext/byebug
+make "DESTDIR="
+compiling byebug.c
+compiling threads.c
+compiling locker.c
+compiling breakpoint.c
+compiling context.c
+linking shared-object byebug/byebug.so
+
+current directory: /home/yyq/ruby_project/patientRecords/vendor/bundle/ruby/2.3.0/gems/byebug-9.0.5/ext/byebug
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 byebug.so ./.gem.20160811-38520-1h1ri3n/byebug
