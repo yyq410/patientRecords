@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :doctors
+  resources :patients
 
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
