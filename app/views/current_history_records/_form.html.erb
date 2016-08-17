@@ -1,0 +1,684 @@
+<table class="table table-condensed">
+<tr>
+    <td style="width:100px">
+    <div class="form-group">
+    <%= f.label :recordTime, "就诊时间", style:"font-size:20px", class:"btn-info"%>
+    <%= f.date_field :recordTime, class:"form-control"%>
+</div> </td>
+    <td style="width:100px">
+<div class="form-group">
+    <%= f.label :docName, "门诊医生", class:"text-success", style:"font-size:20px", class:"btn-info"%>
+    <%= f.text_field :docName, class:"form-control"%>
+</div></td>
+<td style="width:30px">
+<div class="form-group">
+    <%= f.label :beginIllnessAge, "发病年龄", style:"font-size:20px", class:"btn-info"%>
+    <div class="input-group">
+        <%= f.number_field :beginIllnessAge, in: 0..100, step:1 , class:"form-control"%>
+        <span class=input-group-addon>岁</span>
+    </div>
+</div> 
+</td>
+<td style="width:100px">
+<div class="form-group">
+    <%= f.label :firstSymptom, "首发症状", style:"font-size:20px", class:"btn-info"%>
+    <%= f.select :firstSymptom, options_for_select({"无" => -1, "行走不稳" => 0, "言语不清" => 1, "头晕" =>2, "排尿障碍" => 3, "排便障碍" => 4, "动作迟缓" => 5,"性功能减退" => 6}, @currentHistory.firstSymptom), {include_blank:true}, class:"form-control" %>
+</div></td>
+</tr>
+</table>
+<button class="btn btn-warning btn-lg">现病史</button>
+<table class="table table-condensed">
+    <tr>
+<div class="form-group">
+    <td><%= f.label :weightLoss, "体重下降", style:"font-size:20px", class:"btn-info", id:"feature1"%></td>
+    <td style="width:150px"><%= f.radio_button :weigthLoss, 0 %> 是
+    <%= f.radio_button :weigthLoss, 1%> 否
+    <%= f.radio_button :weigthLoss, 2%> 未知<br/></td>
+    <td style="width:150px"><%= f.label "出现至今时间:"%>
+    <div class="input-group">
+        <%= f.number_field :weightLossDuring, in: 0..200, step:1 , class:"form-control"%>
+        <span class=input-group-addon>年</span>
+    </div> 
+    <div class="input-group">
+        <%= f.number_field :weightLossMonth, in: 0..11, step:1 , class:"form-control"%>
+        <span class=input-group-addon>月</span>
+</div> </td>
+    <td style="width:100px"><%= f.label :weightLossScale,"下降"%>
+    <div class="input-group" style="width:120px">
+        <%= f.number_field :weightLossScale, in: 0..200, step: 1 , class:"form-control"%>
+        <span class="input-group-addon">斤</span>
+    </div></td>
+</div> 
+</tr>
+<tr>
+<div class="form-group">
+    <td><%= f.label :walkUnstable, "行走不稳", style:"font-size:20px", class:"btn-info", id:"feature2"%></td>
+    <td><%= f.radio_button :walkUnstable, 0 %> 是
+    <%= f.radio_button :walkUnstable, 1%> 否
+    <%= f.radio_button :walkUnstable, 2%> 未知<br/></td>
+    <td><%= f.label "出现至今时间:"%>
+    <div class="input-group">
+        <%= f.number_field :walkTime, in: 0..200, step:1 , class:"form-control"%>
+        <span class=input-group-addon>年</span>
+    </div> 
+    <div class="input-group">
+        <%= f.number_field :walkMonth, in: 0..11, step:1 , class:"form-control"%>
+        <span class=input-group-addon>月</span>
+    </div> </td>
+    <td><%= f.label :walkScale, "程度" %>
+    <%= f.select :walkScale, options_for_select({"无"=>-1, "正常"=>0, "轻度"=>1, "中度"=>2, "重度"=>3, "不能"=>4}, @currentHistory.walkScale) , {include_blank:true} , class:"form-control"%></td>
+    <td><%= f.label "状态"%>
+    <%= f.select :walkNow, options_for_select({"逐渐加重"=>1, "进展较快"=>2}, @currentHistory.walkNow), {include_blank:true}, :class=>"form-control"%></td>
+    <td><%= f.label "起病过程"%>
+    <%= f.text_field :walkUnstableMore, class:"form-control"%></td>
+</div> 
+</tr>
+<tr>
+<div class="form-group">
+    <td><%= f.label :speakUnclear, "言语不清", style:"font-size:20px", class:"btn-info", id:"feature3"%></td>
+    <td><%= f.radio_button :speakUnclear, 0 %> 是
+    <%= f.radio_button :speakUnclear, 1%> 否
+    <%= f.radio_button :speakUnclear, 2%> 未知<br/></td>
+    <td><%= f.label "出现至今时间:"%>
+    <div class="input-group">
+        <%= f.number_field :speakTime, in: 0..200, step:1 , class:"form-control"%>
+        <span class=input-group-addon>年</span>
+    </div> 
+    <div class="input-group">
+        <%= f.number_field :speakMonth, in: 0..11, step:1 , class:"form-control"%>
+        <span class=input-group-addon>月</span>
+    </div> </td>
+    <td><%= f.label :speakScale, "目前状态" %>
+    <%= f.select :speakScale, options_for_select({"无"=>-1, "正常"=>0, "轻度"=>1, "中度"=>2, "重度"=>3, "不能"=>4}, @currentHistory.speakScale) , {include_blank:true} , class:"form-control"%></td>
+    <td><%= f.label "状态"%>
+    <%= f.select :speakNow, options_for_select({"逐渐加重"=>1, "进展较快"=>2}, @currentHistory.speakNow), {include_blank:true}, :class=>"form-control"%></td>
+    <td><%= f.label "起病过程"%>
+    <%= f.text_field :speakUnclearMore, class:"form-control"%></td>
+</div> 
+</tr><tr>
+<div class="form-group">
+    <td><%= f.label :holdUnstable, "持物不稳", style:"font-size:20px", class:"btn-info", id:"feature4"%></td>
+    <td><%= f.radio_button :holdUnstable, 0 %> 是
+    <%= f.radio_button :holdUnstable, 1%> 否
+    <%= f.radio_button :holdUnstable, 2%> 未知<br/></td>
+    <td><%= f.label "出现至今时间:"%>
+    <div class="input-group">
+        <%= f.number_field :holdTime, in: 0..200, step:1 , class:"form-control"%>
+        <span class=input-group-addon>年</span>
+    </div> 
+    <div class="input-group">
+        <%= f.number_field :holdMonth, in: 0..11, step:1 , class:"form-control"%>
+        <span class=input-group-addon>月</span>
+    </div> </td>
+    <td><%= f.label :holdScale, "目前状态" %>
+    <%= f.select :holdScale, options_for_select({"无"=>-1, "正常"=>0, "轻度"=>1, "中度"=>2, "重度"=>3, "不能"=>4}, @currentHistory.holdScale) , {include_blank:true} , class:"form-control"%></td>
+    <td><%= f.label "状态"%>
+    <%= f.select :holdNow, options_for_select({"逐渐加重"=>1, "进展较快"=>2}, @currentHistory.holdNow), {include_blank:true}, :class=>"form-control"%></td>
+    <td><%= f.label "起病过程"%>
+    <%= f.text_field :holdUnstableMore, class:"form-control"%></td>
+</div> 
+</tr>
+<tr>
+<div class="form-group">
+    <td><%= f.label :drinkHard, "饮水呛咳", style:"font-size:20px", class:"btn-info", id:"feature5"%></td>
+    <td><%= f.radio_button :drinkHard, 0 %> 是
+    <%= f.radio_button :drinkHard, 1%> 否
+    <%= f.radio_button :drinkHard, 2%> 未知<br/></td>
+    <td><%= f.label "出现至今时间:"%>
+    <div class="input-group">
+        <%= f.number_field :drinkTime, in: 0..200, step:1 , class:"form-control"%>
+        <span class=input-group-addon>年</span>
+    </div> 
+    <div class="input-group">
+        <%= f.number_field :drinkMonth, in: 0..11, step:1 , class:"form-control"%>
+        <span class=input-group-addon>月</span>
+</div> </td>
+    <td><%= f.label :drinkScale, "目前状态" %>
+    <%= f.select :drinkScale, options_for_select({"无"=>-1, "正常"=>0, "轻度"=>1, "中度"=>2, "重度"=>3, "不能"=>4}, @currentHistory.drinkScale) , {include_blank:true} , class:"form-control"%></td>
+    <td><%= f.label "状态"%>
+    <%= f.select :drinkNow, options_for_select({"逐渐加重"=>1, "进展较快"=>2}, @currentHistory.drinkNow), {include_blank:true}, :class=>"form-control"%></td>
+    <td><%= f.label "起病过程"%>
+    <%= f.text_field :drinkHardMore, class:"form-control"%></td>
+</div> 
+</tr><tr>
+<div class="form-group">
+    <td><%= f.label :eatHard, "吞咽困难", style:"font-size:20px", class:"btn-info", id:"feature6"%></td>
+    <td><%= f.radio_button :eatHard, 0 %> 是
+    <%= f.radio_button :eatHard, 1%> 否
+    <%= f.radio_button :eatHard, 2%> 未知<br/></td>
+    <td><%= f.label "出现至今时间:"%>
+    <div class="input-group">
+        <%= f.number_field :eatTime, in: 0..200, step:1 , class:"form-control"%>
+        <span class=input-group-addon>年</span>
+    </div> 
+    <div class="input-group">
+        <%= f.number_field :eatMonth, in: 0..11, step:1 , class:"form-control"%>
+        <span class=input-group-addon>月</span>
+    </div> </td>
+    <td><%= f.label :eatScale, "目前状态" %>
+    <%= f.select :eatScale, options_for_select({"无"=>-1, "正常"=>0, "轻度"=>1, "中度"=>2, "重度"=>3, "不能"=>4}, @currentHistory.eatScale) , {include_blank:true} , class:"form-control"%></td>
+    <td><%= f.label "状态"%>
+    <%= f.select :eatNow, options_for_select({"逐渐加重"=>1, "进展较快"=>2}, @currentHistory.eatNow), {include_blank:true}, :class=>"form-control"%></td>
+    <td><%= f.label "起病过程"%>
+    <%= f.text_field :eatHardMore, class:"form-control"%></td>
+</div> 
+</tr><tr>
+<div class="form-group">
+    <td><%= f.label :eyeUnclear, "视物模糊", style:"font-size:20px", class:"btn-info", id:"feature7"%></td>
+    <td><%= f.radio_button :eyeUnclear, 0 %> 是
+    <%= f.radio_button :eyeUnclear, 1%> 否
+    <%= f.radio_button :eyeUnclear, 2%> 未知<br/></td>
+    <td><%= f.label "出现至今时间:"%>
+    <div class="input-group">
+        <%= f.number_field :eyeTime, in: 0..200, step:1 , class:"form-control"%>
+        <span class=input-group-addon>年</span>
+    </div> 
+    <div class="input-group">
+        <%= f.number_field :eyeMonth, in: 0..11, step:1 , class:"form-control"%>
+        <span class=input-group-addon>月</span>
+    </div> </td>
+    <td><%= f.label :eyeScale, "目前状态" %>
+    <%= f.select :eyeScale, options_for_select({"无"=>-1, "正常"=>0, "轻度"=>1, "中度"=>2, "重度"=>3, "不能"=>4}, @currentHistory.eyeScale) , {include_blank:true} , class:"form-control"%></td>
+    <td><%= f.label "状态"%>
+    <%= f.select :eyeNow, options_for_select({"逐渐加重"=>1, "进展较快"=>2}, @currentHistory.eyeNow), {include_blank:true}, :class=>"form-control"%></td>
+    <td><%= f.label "起病过程"%>
+    <%= f.text_field :eyeUnclearMore, class:"form-control"%></td>
+</div> 
+</tr><tr>
+<div class="form-group">
+    <td><%= f.label :swirl, "头晕", style:"font-size:20px", class:"btn-info", id:"feature8"%></td>
+    <td><%= f.radio_button :swirl, 0 %> 是
+    <%= f.radio_button :swirl, 1%> 否
+    <%= f.radio_button :swirl, 2%> 未知<br/></td>
+    <td><%= f.label "出现至今时间:"%>
+    <div class="input-group">
+        <%= f.number_field :swirlTime, in: 0..200, step:1 , class:"form-control"%>
+        <span class=input-group-addon>年</span>
+    </div> 
+    <div class="input-group">
+        <%= f.number_field :swirlMonth, in: 0..11, step:1 , class:"form-control"%>
+        <span class=input-group-addon>月</span>
+    </div> </td>
+    <td><%= f.label :swirlScale, "目前状态" %>
+    <%= f.select :swirlScale, options_for_select({"无"=>-1, "正常"=>0, "轻度"=>1, "中度"=>2, "重度"=>3, "不能"=>4}, @currentHistory.swirlScale) , {include_blank:true} , class:"form-control"%></td>
+    <td><%= f.label "状态"%>
+    <%= f.select :swirlNow, options_for_select({"逐渐加重"=>1, "进展较快"=>2}, @currentHistory.swirlNow), {include_blank:true}, :class=>"form-control"%></td>
+    <td><%= f.label "起病过程"%>
+    <%= f.text_field :swirlMore, class:"form-control"%></td>
+</div> 
+</tr>
+<tr>
+<div class="form-group">
+    <td><%= f.label :syncope, "晕厥", style:"font-size:20px", class:"btn-info", id:"feature9"%></td>
+    <td><%= f.radio_button :syncope, 0 %> 是
+    <%= f.radio_button :syncope, 1%> 否
+    <%= f.radio_button :syncope, 2%> 未知<br/></td>
+    <td><%= f.label "出现至今时间:"%>
+    <div class="input-group">
+        <%= f.number_field :syncopeTime, in: 0..200, step:1 , class:"form-control"%>
+        <span class=input-group-addon>年</span>
+    </div> 
+    <div class="input-group">
+        <%= f.number_field :syncopeMonth, in: 0..11, step:1 , class:"form-control"%>
+        <span class=input-group-addon>月</span>
+    </div> </td>
+    <td><%= f.label :syncopeNumber, "晕厥次数" %>
+    <div class="input-group" style="width:120px">
+        <%= f.number_field :syncopeNumber, in: 0..1000, step: 1, class:"form-control"%> 
+        <span class="input-group-addon">次</span>
+    </div></td>
+</div> 
+</tr><tr>
+<div class="form-group">
+    <td><%= f.label :actionSlow, "动作慢", style:"font-size:20px", class:"btn-success", id:"feature10"%></td>
+    <td><%= f.radio_button :actionSlow, 0 %> 是
+    <%= f.radio_button :actionSlow, 1%> 否
+    <%= f.radio_button :actionSlow, 2%> 未知<br/></td>
+    <td><%= f.label "出现至今时间:"%>
+    <div class="input-group">
+        <%= f.number_field :actionTime, in: 0..200, step:1 , class:"form-control"%>
+        <span class=input-group-addon>年</span>
+    </div> 
+    <div class="input-group">
+        <%= f.number_field :actionMonth, in: 0..11, step:1 , class:"form-control"%>
+        <span class=input-group-addon>月</span>
+    </div> </td>
+    <br/>
+    <td> <%= f.label "目前状态"%>
+    <%= f.select :actionScale, options_for_select({"无"=>-1, "正常"=>0, "轻度"=>1, "中度"=>2, "重度"=>3, "不能"=>4}, @currentHistory.actionScale) , {include_blank:true} , class:"form-control"%></td>
+    <td><%= f.label "状态"%>
+    <%= f.select :actionNow, options_for_select({"逐渐加重"=>1, "进展较快"=>2}, @currentHistory.actionNow), {include_blank:true}, :class=>"form-control"%></td>
+    <td><%= f.label "起病过程"%>
+    <%= f.text_field :actionSlowMore, class:"form-control"%></td>
+</div> 
+</tr>
+<tr>
+<div class="form-group">
+    <td><%= f.label :oneSideRigid, "一侧肢体不灵活", style:"font-size:20px", class:"btn-success", id:"feature11"%></td>
+    <td><%= f.radio_button :oneSideRigid, 0 %> 是
+    <%= f.radio_button :oneSideRigid, 1%> 否
+    <%= f.radio_button :oneSideRigid, 2%> 未知<br/></td>
+    <td><%= f.label "出现至今时间:"%>
+    <div class="input-group">
+        <%= f.number_field :oneSideTime, in: 0..200, step:1 , class:"form-control"%>
+        <span class=input-group-addon>年</span>
+    </div> 
+    <div class="input-group">
+        <%= f.number_field :oneSideMonth, in: 0..11, step:1 , class:"form-control"%>
+        <span class=input-group-addon>月</span>
+    </div> </td>
+    <td><%= f.label :oneSideScale, "目前状态" %>
+    <%= f.select :oneSideScale, options_for_select({"无"=>-1, "正常"=>0, "轻度"=>1, "中度"=>2, "重度"=>3, "不能"=>4}, @currentHistory.oneSideScale) , {include_blank:true} , class:"form-control"%></td>
+    <td><%= f.label "状态"%>
+    <%= f.select :oneSideNow, options_for_select({"逐渐加重"=>1, "进展较快"=>2}, @currentHistory.oneSideNow), {include_blank:true}, :class=>"form-control"%></td>
+    <td><%= f.label "起病过程"%>
+    <%= f.text_field :oneSideRigidMore, class:"form-control"%></td>
+</div> 
+</tr><tr>
+<div class="form-group">
+    <td><%= f.label :tremble, "震颤", style:"font-size:20px", class:"btn-success", id:"feature12"%></td>
+    <td><%= f.radio_button :tremble, 0 %> 是
+    <%= f.radio_button :tremble, 1%> 否
+    <%= f.radio_button :tremble, 2%> 未知<br/></td>
+    <td><%= f.label "出现至今时间:"%>
+    <div class="input-group">
+        <%= f.number_field :trembleTime, in: 0..200, step:1 , class:"form-control"%>
+        <span class=input-group-addon>年</span>
+    </div> 
+    <div class="input-group">
+        <%= f.number_field :trembleMonth, in: 0..11, step:1 , class:"form-control"%>
+        <span class=input-group-addon>月</span>
+    </div> </td>
+    <td><%= f.label "目前状态"%>
+    <%= f.select :trembleScale, options_for_select({"无"=>-1, "正常"=>0, "轻度"=>1, "中度"=>2, "重度"=>3, "不能"=>4}, @currentHistory.trembleScale) , {include_blank:true} , class:"form-control"%></td>
+    <td><%= f.label "状态"%>
+    <%= f.select :trembleNow, options_for_select({"逐渐加重"=>1, "进展较快"=>2}, @currentHistory.trembleNow), {include_blank:true}, :class=>"form-control"%></td>
+    <td><%= f.label "起病过程"%>
+    <%= f.text_field :trembleMore, class:"form-control"%></td>
+</div> 
+</tr><tr>
+<div class="form-group">
+    <td><%= f.label :lowerWeakness, "下肢无力", style:"font-size:20px", class:"btn-success", id:"feature13"%></td>
+    <td><%= f.radio_button :lowerWeakness, 0 %> 是
+    <%= f.radio_button :lowerWeakness, 1%> 否
+    <%= f.radio_button :lowerWeakness, 2%> 未知<br/></td>
+    <td><%= f.label "出现至今时间:"%>
+    <div class="input-group">
+        <%= f.number_field :lowerTime, in: 0..200, step:1 , class:"form-control"%>
+        <span class=input-group-addon>年</span>
+    </div> 
+    <div class="input-group">
+        <%= f.number_field :lowerMonth, in: 0..11, step:1 , class:"form-control"%>
+        <span class=input-group-addon>月</span>
+    </div> </td>
+    <td><%= f.label "目前状态"%>
+    <%= f.select :lowerScale, options_for_select({"无"=>-1, "正常"=>0, "轻度"=>1, "中度"=>2, "重度"=>3, "不能"=>4}, @currentHistory.lowerScale) , {include_blank:true} , class:"form-control"%></td>
+    <td><%= f.label "状态"%>
+    <%= f.select :lowerNow, options_for_select({"逐渐加重"=>1, "进展较快"=>2}, @currentHistory.lowerNow), {include_blank:true}, :class=>"form-control"%></td>
+    <td><%= f.label "起病过程"%>
+    <%= f.text_field :lowerWeaknessMore, class:"form-control"%></td>
+</div> 
+</tr><tr>
+<div class="form-group">
+    <td><%= f.label :weakness, "乏力", style:"font-size:20px", class:"btn-success", id:"feature14"%></td>
+    <td><%= f.radio_button :weakness, 0 %> 是
+    <%= f.radio_button :weakness, 1%> 否
+    <%= f.radio_button :weakness, 2%> 未知<br/></td>
+    <td><%= f.label "出现至今时间:"%>
+    <div class="input-group">
+        <%= f.number_field :weaknessTime, in: 0..200, step:1 , class:"form-control"%>
+        <span class=input-group-addon>年</span>
+    </div> 
+    <div class="input-group">
+        <%= f.number_field :weaknessMonth, in: 0..11, step:1 , class:"form-control"%>
+        <span class=input-group-addon>月</span>
+    </div> </td>
+    <td><%= f.label "目前状态"%>
+    <%= f.select :weaknessScale, options_for_select({"无"=>-1, "正常"=>0, "轻度"=>1, "中度"=>2, "重度"=>3, "不能"=>4}, @currentHistory.weaknessScale) , {include_blank:true} , class:"form-control"%></td>
+    <td><%= f.label "状态"%>
+    <%= f.select :weaknessNow, options_for_select({"逐渐加重"=>1, "进展较快"=>2}, @currentHistory.weaknessNow), {include_blank:true}, :class=>"form-control"%></td>
+    <td><%= f.label "起病过程"%>
+    <%= f.text_field :weaknessMore, class:"form-control"%></td>
+</div> 
+</tr><tr>
+<div class="form-group">
+    <td><%= f.label :pissFast, "尿频急", style:"font-size:20px", class:"btn-warning", id:"feature15"%></td>
+    <td><%= f.radio_button :pissFast, 0 %> 是
+    <%= f.radio_button :pissFast, 1%> 否
+    <%= f.radio_button :pissFast, 2%> 未知<br/></td>
+    <td><%= f.label "出现至今时间:"%>
+    <div class="input-group">
+        <%= f.number_field :pissTime, in: 0..200, step:1 , class:"form-control"%>
+        <span class=input-group-addon>年</span>
+    </div> 
+    <div class="input-group">
+        <%= f.number_field :pissMonth, in: 0..11, step:1 , class:"form-control"%>
+        <span class=input-group-addon>月</span>
+    </div> </td>
+    <td><%= f.label "目前状态"%>
+    <%= f.select :pissScale, options_for_select({"无"=>-1, "正常"=>0, "轻度"=>1, "中度"=>2, "重度"=>3, "不能"=>4}, @currentHistory.pissScale) , {include_blank:true} , class:"form-control"%></td>
+    <td><%= f.label "状态"%>
+    <%= f.select :pissFastNow, options_for_select({"逐渐加重"=>1, "进展较快"=>2}, @currentHistory.pissFastNow), {include_blank:true}, :class=>"form-control"%></td>
+    <td><%= f.label "起病过程"%>
+    <%= f.text_field :pissFastMore, class:"form-control"%></td>
+</div> 
+</tr><tr>
+<div class="form-group">
+    <td><%= f.label :pissNotEnd, "尿不净", style:"font-size:20px", class:"btn-warning", id:"feature16"%></td>
+    <td><%= f.radio_button :pissNotEnd, 0 %> 是
+    <%= f.radio_button :pissNotEnd, 1%> 否
+    <%= f.radio_button :pissNotEnd, 2%> 未知<br/></td>
+    <td><%= f.label "出现至今时间:"%>
+    <div class="input-group">
+        <%= f.number_field :pissNotEndTime, in: 0..200, step:1 , class:"form-control"%>
+        <span class=input-group-addon>年</span>
+    </div> 
+    <div class="input-group">
+        <%= f.number_field :pissNotEndMonth, in: 0..11, step:1 , class:"form-control"%>
+        <span class=input-group-addon>月</span>
+    </div> </td>
+    <td><%= f.label "目前状态"%>
+    <%= f.select :pissNotEndScale, options_for_select({"无"=>-1, "正常"=>0, "轻度"=>1, "中度"=>2, "重度"=>3, "不能"=>4}, @currentHistory.pissNotEndScale) , {include_blank:true} , class:"form-control"%></td>
+    <td><%= f.label "状态"%>
+    <%= f.select :pissNotEndNow, options_for_select({"逐渐加重"=>1, "进展较快"=>2}, @currentHistory.pissNotEndNow), {include_blank:true}, :class=>"form-control"%></td>
+    <td><%= f.label "起病过程"%>
+    <%= f.text_field :pissNotEndMore, class:"form-control"%></td>
+</div> 
+</tr><tr>
+<div class="form-group">
+    <td><%= f.label :pissNightAdd, "夜尿增多", style:"font-size:20px", class:"btn-warning", id:"feature17"%></td>
+    <td><%= f.radio_button :pissNightAdd, 0 %> 是
+    <%= f.radio_button :pissNightAdd, 1%> 否
+    <%= f.radio_button :pissNightAdd, 2%> 未知<br/></td>
+    <td><%= f.label "出现至今时间:"%>
+    <div class="input-group">
+        <%= f.number_field :pissAddTime, in: 0..200, step:1 , class:"form-control"%>
+        <span class=input-group-addon>年</span>
+    </div> 
+    <div class="input-group">
+        <%= f.number_field :pissAddMonth, in: 0..11, step:1 , class:"form-control"%>
+        <span class=input-group-addon>月</span>
+    </div> </td>
+    <td><%= f.label "夜尿次数"%>
+    <div class="input-group" style="width:120px">
+        <%= f.number_field :pissAddNumber, in:0..1000, step: 1, class:"form-control"%>
+        <span class="input-group-addon">次</span>
+    </div></td>
+</div> 
+</tr><tr>
+
+<div class="form-group">
+    <td><%= f.label :defecate, "排便障碍", style:"font-size:20px", class:"btn-info", id:"feature18"%></td>
+    <td><%= f.radio_button :defecate, 0 %> 是
+    <%= f.radio_button :defecate, 1%> 否
+    <%= f.radio_button :defecate, 2%> 未知<br/></td>
+    <td><%= f.label "出现至今时间:"%>
+    <div class="input-group">
+        <%= f.number_field :defecateTime, in: 0..200, step:1 , class:"form-control"%>
+        <span class=input-group-addon>年</span>
+    </div> 
+    <div class="input-group">
+        <%= f.number_field :defecateMonth, in: 0..11, step:1 , class:"form-control"%>
+        <span class=input-group-addon>月</span>
+    </div> </td>
+    <td><%= f.label "排便频次"%>
+    <div class="input-group" style="width:120px">
+        <%= f.number_field :defecateNumber, in:0..1000, step: 1, class:"form-control"%>
+        <span class="input-group-addon">次</span>
+    </div></td>
+    <td><%= f.label "是否需要药物辅助"%><br/>
+    <%= f.radio_button :defecateNeedAssist, true%> 是
+    <%= f.radio_button :defecateNeedAssist, false%> 否</td>
+</div> 
+</tr><tr>
+<div class="form-group">
+    <td><%= f.label :sexualLow, "性功能减退", style:"font-size:20px", class:"btn-info", id:"feature19"%></td>
+    <td><%= f.radio_button :sexualLow, 0 %> 是
+    <%= f.radio_button :sexualLow, 1%> 否
+    <%= f.radio_button :sexualLow, 2%> 未知<br/></td>
+    <td><%= f.label "出现至今时间:"%>
+    <div class="input-group">
+        <%= f.number_field :sexualLowTime, in: 0..200, step:1 , class:"form-control"%>
+        <span class=input-group-addon>年</span>
+    </div> 
+    <div class="input-group">
+        <%= f.number_field :sexualLowMonth, in: 0..11, step:1 , class:"form-control"%>
+        <span class=input-group-addon>月</span>
+    </div> </td>
+    <td><%= f.label "目前状态"%>
+    <%= f.text_field :sexualLowWords, class:"form-control"%></td>
+</div>
+</tr><tr>
+
+<div class="form-group">
+    <td><%= f.label :motionCold, "手脚冰凉", style:"font-size:20px", class:"btn-info", id:"feature20"%></td>
+    <td><%= f.radio_button :motionCold, 0 %> 是
+    <%= f.radio_button :motionCold, 1%> 否
+    <%= f.radio_button :motionCold, 2%> 未知<br/></td>
+    <td><%= f.label "出现至今时间:"%>
+    <div class="input-group">
+        <%= f.number_field :motionColdTime, in: 0..200, step:1 , class:"form-control"%>
+        <span class=input-group-addon>年</span>
+    </div> 
+    <div class="input-group">
+        <%= f.number_field :motionColdMonth, in: 0..11, step:1 , class:"form-control"%>
+        <span class=input-group-addon>月</span>
+    </div> </td>
+    <td><%= f.label "部位"%>
+    <%= f.text_field :motionColdPosition, class:"form-control"%></td>
+    <td><%= f.label "程度"%>
+    <%= f.select :motionColdScale, options_for_select({"轻度"=>0, "中度"=>1, "重度"=>2}, @currentHistory.motionColdScale), {include_blank:true}, class:"form-control"%></td>
+</div>
+</tr>
+<tr>
+<div class="form-group">
+    <td><%= f.label :perspire, "排汗异常", style:"font-size:20px", class:"btn-info", id:"feature21"%></td>
+    <td><%= f.radio_button :perspire, 0 %> 是
+    <%= f.radio_button :perspire, 1%> 否
+    <%= f.radio_button :perspire, 2%> 未知<br/></td>
+    <td><%= f.label "出现至今时间:"%>
+    <div class="input-group">
+        <%= f.number_field :perspireTime, in: 0..200, step:1 , class:"form-control"%>
+        <span class=input-group-addon>年</span>
+    </div> 
+    <div class="input-group">
+        <%= f.number_field :perspireMonth, in: 0..11, step:1 , class:"form-control"%>
+        <span class=input-group-addon>月</span>
+    </div> </td>
+    <td><%= f.label :perspireScale, "排汗频率"%>
+    <div class="input-group">
+        <%= f.number_field :perspireScale, in: 0..11, step:1 , class:"form-control"%>
+        <span class=input-group-addon>次</span>
+    </div> </td>
+    <td><%- f.label "目前状态"%>
+    <%= f.text_field :perspireText, class:"form-control"%></td>
+</div> 
+</tr><tr>
+
+<div class="form-group">
+    <td><%= f.label :dreamSay, "梦中喊叫", style:"font-size:20px", class:"btn-info", id:"feature22"%></td>
+    <td><%= f.radio_button :dreamSay, 0 %> 是
+    <%= f.radio_button :dreamSay, 1%> 否
+    <%= f.radio_button :dreamSay, 2%> 未知<br/></td>
+    <td><%= f.label "出现至今时间:"%>
+    <div class="input-group">
+        <%= f.number_field :dreamSayTime, in: 0..200, step:1 , class:"form-control"%>
+        <span class=input-group-addon>年</span>
+    </div> 
+    <div class="input-group">
+        <%= f.number_field :dreamSayMonth, in: 0..11, step:1 , class:"form-control"%>
+        <span class=input-group-addon>月</span>
+    </div> </td>
+    <td><%= f.label "喊叫频次" %>
+    <div class="input-group" style="width:120px">
+        <%= f.number_field :dreamSayNumber, in:0..1000, step: 1, class:"form-control"%>
+        <span class="input-group-addon">次</span>
+    </div></td>
+    <td><%= f.label "目前状态"%>
+    <%= f.text_field :dreamSayText, class:"form-control"%></td>
+</div> 
+</tr><tr>
+<div class="form-group">
+    <td><%= f.label :dreamMotion, "梦中肢体活动", style:"font-size:20px", class:"btn-info", id:"feature23"%></td>
+    <td><%= f.radio_button :dreamMotion, 0 %> 是
+    <%= f.radio_button :dreamMotion, 1%> 否
+    <%= f.radio_button :dreamMotion, 2%> 未知<br/></td>
+    <td><%= f.label "出现至今时间:"%>
+    <div class="input-group">
+        <%= f.number_field :dreamMotionTime, in: 0..200, step:1 , class:"form-control"%>
+        <span class=input-group-addon>年</span>
+    </div> 
+    <div class="input-group">
+        <%= f.number_field :dreamMotionMonth, in: 0..11, step:1 , class:"form-control"%>
+        <span class=input-group-addon>月</span>
+    </div> </td>
+    <td><%= f.label "活动频次"%>
+    <div class="input-group" style="width:120px">
+        <%= f.number_field :dreamMotionNumber, in:0..1000, step: 1, class:"form-control"%>
+        <span class="input-group-addon">次</span>
+    </div>
+    </td>
+</div> 
+</tr><tr>
+<div class="form-group">
+    <td><%= f.label :bedFall, "坠床", style:"font-size:20px", class:"btn-info", id:"feature24"%></td>
+    <td><%= f.radio_button :bedFall, 0 %> 是
+    <%= f.radio_button :bedFall, 1%> 否
+    <%= f.radio_button :bedFall, 2%> 未知<br/></td>
+    <td><%= f.label "出现至今时间:"%>
+    <div class="input-group">
+        <%= f.number_field :bedFallTime, in: 0..200, step:1 , class:"form-control"%>
+        <span class=input-group-addon>年</span>
+    </div> 
+    <div class="input-group">
+        <%= f.number_field :bedFallMonth, in: 0..11, step:1 , class:"form-control"%>
+        <span class=input-group-addon>月</span>
+    </div> </td>
+    <td><%= f.label "目前状态"%>
+    <%= f.text_field :bedFallText, class:"form-control"%></td>
+</div> 
+</tr>
+<tr>
+<div class="form-group">
+    <td><%= f.label :snore, "打鼾", style:"font-size:20px", class:"btn-info", id:"feature25"%></td>
+    <td><%= f.radio_button :snore, 0 %> 是
+    <%= f.radio_button :snore, 1%> 否
+    <%= f.radio_button :snore, 2%> 未知<br/></td>
+    <td><%= f.label "出现至今时间:"%>
+    <div class="input-group">
+        <%= f.number_field :snoreTime, in: 0..200, step:1 , class:"form-control"%>
+        <span class=input-group-addon>年</span>
+    </div> 
+    <div class="input-group">
+        <%= f.number_field :snoreMonth, in: 0..11, step:1 , class:"form-control"%>
+        <span class=input-group-addon>月</span>
+    </div> </td>
+    <td><%= f.label "目前状态"%>
+    <%= f.text_field :snoreText, class:"form-control"%></td>
+
+</div> 
+</tr><tr>
+
+<div class="form-group">
+    <td><%= f.label :sleepStop, "睡眠呼吸暂停", style:"font-size:20px", class:"btn-info", id:"feature26"%></td>
+    <td><%= f.radio_button :sleepStop, 0 %> 是
+    <%= f.radio_button :sleepStop, 1%> 否
+    <%= f.radio_button :sleepStop, 2%> 未知<br/></td>
+    <td><%= f.label "出现至今时间:"%>
+    <div class="input-group">
+        <%= f.number_field :sleepStopTime, in: 0..200, step:1 , class:"form-control"%>
+        <span class=input-group-addon>年</span>
+    </div> 
+    <div class="input-group">
+        <%= f.number_field :sleepStopMonth, in: 0..11, step:1 , class:"form-control"%>
+        <span class=input-group-addon>月</span>
+    </div> </td>
+    <td><%= f.label "目前状态"%>
+    <%= f.text_field :sleepStopText, class:"form-control"%></td>
+
+</div> 
+</tr><tr>
+<div class="form-group">
+    <td><%= f.label :throatSay, "喉鸣", style:"font-size:20px", class:"btn-info", id:"feature27"%></td>
+    <td><%= f.radio_button :throatSay, 0 %> 是
+    <%= f.radio_button :throatSay, 1%> 否
+    <%= f.radio_button :throatSay, 2%> 未知<br/></td>
+    <td><%= f.label "出现至今时间:"%>
+    <div class="input-group">
+        <%= f.number_field :throatSayTime, in: 0..200, step:1 , class:"form-control"%>
+        <span class=input-group-addon>年</span>
+    </div> 
+    <div class="input-group">
+        <%= f.number_field :throatSayMonth, in: 0..11, step:1 , class:"form-control"%>
+        <span class=input-group-addon>月</span>
+    </div> </td>
+    <td><%= f.label "目前状态"%>
+    <%= f.text_field :throatSayText, class:"form-control"%></td>
+
+</div> 
+</tr><tr>
+<div class="form-group">
+    <td><%= f.label :smileBig, "强哭/强笑", style:"font-size:20px", class:"btn-info", id:"feature28"%></td>
+    <td><%= f.radio_button :smileBig, 0 %> 是
+    <%= f.radio_button :smileBig, 1%> 否
+    <%= f.radio_button :smileBig, 2%> 未知<br/></td>
+    <td><%= f.label "出现至今时间:"%>
+    <div class="input-group">
+        <%= f.number_field :smileBigTime, in: 0..200, step:1 , class:"form-control"%>
+        <span class=input-group-addon>年</span>
+    </div> 
+    <div class="input-group">
+        <%= f.number_field :smileBigMonth, in: 0..11, step:1 , class:"form-control"%>
+        <span class=input-group-addon>月</span>
+    </div> </td>
+    <td><%= f.label :smileBigScale, "目前状态"%>
+    <%= f.select :smileBigScale, options_for_select({"无"=>-1, "正常"=>0, "轻度"=>1, "中度"=>2, "重度"=>3, "不能"=>4}, @currentHistory.smileBigScale) , {include_blank:true} , class:"form-control"%></td>
+
+</div> 
+</tr>
+<tr>
+<div class="form-group">
+    <td><%= f.label :bloodPresureLow, "血压低", style:"font-size:20px", class:"btn-info", id:"feature30"%></td>
+    <td><%= f.radio_button :bloodPresureLow, 0 %> 是
+    <%= f.radio_button :bloodPresureLow, 1%> 否
+    <%= f.radio_button :bloodPresureLow, 2%> 未知<br/></td>
+    <td><%= f.label "出现至今时间:"%>
+    <div class="input-group">
+        <%= f.number_field :bloodPresureTime, in: 0..200, step:1 , class:"form-control"%>
+        <span class=input-group-addon>年</span>
+    </div> 
+    <div class="input-group">
+        <%= f.number_field :bloodPresureMonth, in: 0..11, step:1 , class:"form-control"%>
+        <span class=input-group-addon>月</span>
+    </div> </td>
+    <td><%= f.label "次数"%>
+    <div class="input-group">
+        <%= f.number_field :bloodPresureNumber, in: 0..200, step:1 , class:"form-control"%>
+        <span class=input-group-addon>次</span>
+    </div> </td>
+
+</div> 
+</tr><tr>
+<div class="form-group">
+    <td><%= f.label :hypomnesia, "记忆减退", style:"font-size:20px", class:"btn-info", id:"feature29"%></td>
+    <td><%= f.radio_button :hypomnesia, 0 %> 是
+    <%= f.radio_button :hypomnesia, 1%> 否
+    <%= f.radio_button :hypomnesia, 2%> 未知<br/></td>
+    <td><%= f.label "出现至今时间:"%>
+    <div class="input-group">
+        <%= f.number_field :hypomnesiaTime, in: 0..200, step:1 , class:"form-control"%>
+        <span class=input-group-addon>年</span>
+    </div> 
+    <div class="input-group">
+        <%= f.number_field :hypomnesiaMonth, in: 0..11, step:1 , class:"form-control"%>
+        <span class=input-group-addon>月</span>
+    </div> </td>
+    <td><%= f.label :hypomnesiaScale, "目前状态"%>
+    <%= f.select :hypomnesiaScale, options_for_select({"无"=>-1, "正常"=>0, "轻度"=>1, "中度"=>2, "重度"=>3, "不能"=>4}, @currentHistory.hypomnesiaScale) , {include_blank:true} , class:"form-control"%></td>
+</div> 
+</tr>
+</table>
+<div class="form-group">
+    <%= f.label :extraCurrent, "补充说明", style:"font-size:20px", class:"btn-info", class:"btn-info", id:"feature31"%>
+    <%= f.text_area :extraCurrent, class:"form-control", rows:"5"%>
+</div>

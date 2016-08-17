@@ -1,0 +1,5 @@
+<%= render :partial => "shared/error_messages", :locals => {:var => @doctor}%>
+<%= form_for @doctor, :url => doctor_path(@doctor), :method => :patch do |f| %>
+    <%= render :partial => "form", :locals => {:f => f}%>
+    <%= f.submit "更新医生信息", class:"btn btn-info" %>
+<% end %>

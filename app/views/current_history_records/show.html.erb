@@ -1,0 +1,15 @@
+<%= render :partial => "patient_info", locals: {:f => @patient} %>
+
+<%= form_for @currentHistory, url: edit_patient_current_history_record_path(@patient, @currentHistory), :method => :post do |f|%>
+    <%= render :partial => "form", locals: {:f => f}%>
+    <%= f.submit "编辑现病史", class:"btn btn-success btn-lg" %>
+<% end %>
+    <%= link_to "查看既往史,用药史,家族史和个人史", current_history_record_before_history_record_path(@currentHistory),class:"btn btn-lg btn-link"%>
+
+<% content_for :side_bar do %>
+    <%= render "shared/sidebar"%>
+<% end %>
+
+<% content_for :side_bar2 do%>
+    <%= render :partial => "currentList"%> 
+<% end %>

@@ -1,0 +1,22 @@
+<%= render :partial => "patient_info", locals: {:f => @patient} %>
+
+<button class="btn btn-info btn-lg">就诊记录</button>
+
+<table class="table table-hover">
+    <tr><th>就诊时间</th><th>医生</th><th>操作</th></tr>
+    <% @currentHistories.each do |h|%>
+        <tr>
+            <td><%= h.recordTime%></td>
+            <td><%= h.docName %></td>
+            <td>
+                <%= link_to "编辑", edit_patient_current_history_record_path(@patient, h)%>
+                <%= link_to "查看", patient_current_history_record_path(@patient, h)%>
+                <%= link_to "删除", patient_current_history_record_path(@patient, h), :method => :delete %>
+            </td>
+        </tr>
+    <% end %>
+</table> 
+
+<% content_for :side_bar do %>
+    <%= render "shared/sidebar"%>
+<% end %>

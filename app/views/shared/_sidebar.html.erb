@@ -1,6 +1,8 @@
-    <% if logged_in? %>
+<% if logged_in? %>
+        <h3>医生信息</h3>
         <h3><%= @current_doctor.name %></h3>
         <%= link_to "个人信息", doctor_path(@current_doctor)%>
+        <%= link_to "返回主页", root_path %>
         <%= link_to "退出", logout_path, method:"delete" %>
     <% else %>
 

@@ -1,0 +1,10 @@
+<% if var.errors.any? %>
+    <div id="error_explanation">
+        <p class="text-danger"><h3>填写错误:</h3></p>
+        <div class="alert alert-danger">
+            <% var.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+        </div>
+    </div>
+<% end %>

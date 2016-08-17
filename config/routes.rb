@@ -10,7 +10,27 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :doctors
-  resources :patients
+
+  resources :patients do 
+    resources :current_history_records
+  end 
+
+  post 'patients/:patient_id/current_history_records/:id/edit(.:format)' => 'current_history_records#edit'
+  post 'current_history_records/:current_history_record_id/before_history_record/edit(.:format)' => 'before_history_records#edit'
+  post 'before_history_records/:before_history_record_id/nervous_system/edit(.:format)' => 'nervous_systems#edit'
+  post 'nervous_systems/:nervous_system_id/assist_check/edit(.:format)' => 'assist_checks#edit'
+
+  resources :current_history_records do
+      resource :before_history_record
+  end 
+
+  resources :before_history_records do
+      resource :nervous_system
+  end 
+  
+  resources :nervous_systems do
+      resource :assist_check
+  end 
 
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'

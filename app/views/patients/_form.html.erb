@@ -1,0 +1,25 @@
+  <div class="form-group">
+  <%= f.label :name, "姓名"%>
+  <%= f.text_field :name, class: "form-control"%>
+  </div>
+  <div class="form-group">
+  <%= f.label :gender, "性别"%>
+  <%= f.radio_button :gender, true %> <%= f.label :gender, "男" %>
+  <%= f.radio_button :gender, false %> <%= f.label :gender, "女"%>
+  </div>
+  <div class="form-group">
+  <%= f.label :age, "年龄"%>
+  <%= f.number_field :age, in: 1..150, step: 1, class: "form-control" %>
+  </div>
+  <div class="form-group">
+  <%= f.label :idnumber, "身份证号"%>
+  <%= f.text_field :idnumber, class: "form-control" %>
+  </div>
+  <div class="form-group">
+  <%= f.label :work, "工作"%>
+  <%= f.text_field :work, class: "form-control" %>
+  </div>
+  <div class="form-group">
+  <%= f.label :education, "文化水平"%>
+  <%= f.select :education, options_for_select({"文盲"=>"1", "小学"=>"2", "中学"=>"3", "大学"=>"4", "更高"=>"5"}), {include_blank:true}, class: "form-control" %>
+  </div>

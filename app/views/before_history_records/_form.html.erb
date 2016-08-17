@@ -1,0 +1,451 @@
+<button class="btn btn-warning btn-lg">既往史</button>
+<table class="table table-condensed">
+    <tr>
+        <div class="form-group">
+            <td><%= f.label :unknownFever, "不明原因发热", style:"font-size:20px", class:"btn-info", id:"feature32"%></td>
+            <td><%= f.radio_button :unknownFever, 0 %> 是
+            <%= f.radio_button :unknownFever, 1%> 否
+            <%= f.radio_button :unknownFever, 2%> 未知<br/></td>
+            <td style="width:150px"><%= f.label "出现至今时间"%>
+            <div class="input-group">
+                <%= f.number_field :unknownFeverTime, in: 0..200, step:1 , class:"form-control"%>
+                <span class=input-group-addon>年</span>
+            </div> 
+            <div class="input-group">
+                <%= f.number_field :unknownFeverMonth, in: 0..11, step:1 , class:"form-control"%>
+                <span class=input-group-addon>月</span>
+        </div></td>
+            <td style="width:150px"><%= f.label "治疗方式"%>
+            <%= f.text_field :unknownFeverTreat, class:"form-control"%></td>
+            <td><%= f.label "目前状态"%>
+            <%= f.text_field :unknownFeverText, class:"form-control"%></td>
+        </div>
+    </tr>
+    <tr>
+        <div class="form-group">
+            <td><%= f.label :thyroidException, "甲状腺功能异常", style:"font-size:20px", class:"btn-info", id:"feature33"%></td>
+            <td><%= f.radio_button :thyroidException, 0 %> 是
+            <%= f.radio_button :thyroidException, 1%> 否
+            <%= f.radio_button :thyroidException, 2%> 未知<br/></td>
+            <td><%= f.label "出现至今时间"%>
+            <div class="input-group">
+                <%= f.number_field :thyroidExceptionTime, in: 0..200, step:1 , class:"form-control"%>
+                <span class=input-group-addon>年</span>
+            </div> 
+            <div class="input-group">
+                <%= f.number_field :thyroidExceptionMonth, in: 0..11, step:1 , class:"form-control"%>
+                <span class=input-group-addon>月</span>
+    </div></td>
+        </div>
+    </tr>
+    <tr>
+        <div class="form-group">
+            <td><%= f.label :highPressure, "高血压", style:"font-size:20px", class:"btn-info", id:"feature34"%></td>
+            <td><%= f.radio_button :highPressure, 0 %> 是
+            <%= f.radio_button :highPressure, 1%> 否
+            <%= f.radio_button :highPressure, 2%> 未知<br/></td>
+            <td><%= f.label "最高血压值"%>
+            <%= f.number_field :highPressureValue, in: 0..1000, step: 1, class:"form-control"%></td>
+        <td><%= f.label "是否药物控制"%><br/>
+            <%= f.radio_button :highPressureControl, 0%>是
+                <%= f.radio_button :highPressureControl, 1%>否</td>
+        </div> 
+    </tr>
+    <tr>
+        <div class="form-group">
+            <td><%= f.label :corHeart, "冠心病", style:"font-size:20px", class:"btn-info", id:"feature35"%></td>
+            <td><%= f.radio_button :corHeart, 0 %> 是
+            <%= f.radio_button :corHeart, 1%> 否
+            <%= f.radio_button :corHeart, 2%> 未知<br/></td>
+            <td><%= f.label "出现至今时间"%>
+            <div class="input-group">
+                <%= f.number_field :corHeartTime, in: 0..200, step:1 , class:"form-control"%>
+                <span class=input-group-addon>年</span>
+            </div> 
+            <div class="input-group">
+                <%= f.number_field :corHeartMonth, in: 0..11, step:1 , class:"form-control"%>
+                <span class=input-group-addon>月</span>
+        </div></td>
+            <td><%= f.label "具体情况"%>
+            <%= f.text_field :corHeartWords, class:"form-control"%></td>
+        </div> 
+    </tr>
+    <tr>
+        <div class="form-group">
+            <td><%= f.label :diabetes, "糖尿病", style:"font-size:20px", class:"btn-info", id:"feature36"%></td>
+            <td><%= f.radio_button :diabetes, 0 %> 是
+            <%= f.radio_button :diabetes, 1%> 否
+            <%= f.radio_button :diabetes, 2%> 未知<br/></td>
+            <td><%= f.label "出现至今时间"%>
+            <div class="input-group">
+                <%= f.number_field :diabetesTime, in: 0..200, step:1 , class:"form-control"%>
+                <span class=input-group-addon>年</span>
+            </div> 
+            <div class="input-group">
+                <%= f.number_field :diabetesMonth, in: 0..11, step:1 , class:"form-control"%>
+                <span class=input-group-addon>月</span>
+        </div></td>
+            <td><%= f.label "次数"%>
+            <div class="input-group">
+                <%= f.number_field :diabetesNumber, in: 0..200, step:1 , class:"form-control"%>
+                <span class=input-group-addon>次</span>
+            </div> 
+        </td>
+            <td><%= f.label "具体情况"%>
+            <%= f.text_field :diabetesWords, class:"form-control"%></td>
+        </div> 
+    </tr>
+    <tr>
+        <div class="form-group">
+            <td><%= f.label :COPoison, "CO中毒史", style:"font-size:20px", class:"btn-info", id:"feature37"%></td>
+            <td><%= f.radio_button :COPoison, 0 %> 是
+            <%= f.radio_button :COPoison, 1%> 否
+            <%= f.radio_button :COPoison, 2%> 未知<br/></td>
+            <td><%= f.label "出现至今时间"%>
+            <div class="input-group">
+                <%= f.number_field :COPoisonTime, in: 0..200, step:1 , class:"form-control"%>
+                <span class=input-group-addon>年</span>
+            </div> 
+            <div class="input-group">
+                <%= f.number_field :COPoisonMonth, in: 0..11, step:1 , class:"form-control"%>
+                <span class=input-group-addon>月</span>
+        </div></td>
+            <td><%= f.label "中毒次数"%>
+                    <div class="input-group" style="width:120px">
+            <%= f.number_field :COPoisonNumber, class:"form-control"%>
+                    <span class="input-group-addon">次</span>
+            </div></td>
+            <td><%= f.label "目前状态"%>
+            <%= f.text_field :COPoisonWords , class:"form-control"%></td>
+        </div> 
+    </tr>
+    <tr>
+        <div class="form-group">
+            <td><%= f.label :yuejing, "月经", style:"font-size:20px", class:"btn-info", id:"feature38"%></td>
+            <td><%= f.radio_button :yuejing, 0 %> 是
+            <%= f.radio_button :yuejing, 1%> 否
+            <%= f.radio_button :yuejing, 2%> 未知<br/></td>
+            <td><%= f.label "是否停经"%>
+            <%= f.radio_button :yuejingEnd, 0 %> 是
+                <%= f.radio_button :yuejingEnd, 1%> 否</td>
+
+            <td><%= f.label "停经时间"%>
+            <div class="input-group">
+                <%= f.number_field :yuejingEndYear, in: 0..200, step:1 , class:"form-control"%>
+                <span class=input-group-addon>年</span>
+            </div> 
+            <div class="input-group">
+                <%= f.number_field :yuejingEndMonth, in: 0..11, step:1 , class:"form-control"%>
+                <span class=input-group-addon>月</span>
+            </div>
+        </td>
+        </div> 
+    </tr>
+    <tr>
+        <div class="form-group">
+            <td><%= f.label :brainHurt, "头部外伤", style:"font-size:20px", class:"btn-info", id:"feature39"%></td>
+            <td><%= f.radio_button :brainHurt, 0 %> 是
+            <%= f.radio_button :brainHurt, 1%> 否
+            <%= f.radio_button :brainHurt, 2%> 未知<br/></td>
+            <td><%= f.label "出现至今时间"%>
+            <div class="input-group">
+                <%= f.number_field :brainHurtTime, in: 0..200, step:1 , class:"form-control"%>
+                <span class=input-group-addon>年</span>
+            </div> 
+            <div class="input-group">
+                <%= f.number_field :brainHurtMonth, in: 0..11, step:1 , class:"form-control"%>
+                <span class=input-group-addon>月</span>
+        </div></td>
+            <td><%= f.label "受伤次数"%>
+                    <div class="input-group" style="width:120px">
+            <%= f.number_field :brainHurtNumber, class:"form-control"%>
+                    <span class="input-group-addon">次</span>
+            </div></td>
+            <td><%= f.label "目前状态"%>
+            <%= f.text_field :brainHurtWords , class:"form-control"%></td>
+        </div> 
+    </tr>
+    
+</table>
+
+<button class="btn btn-warning btn-lg">用药史</button>
+<table class="table table-condensed">
+    <tr>
+        <div class="form-group">
+            <td><%= f.label :meiDuoBa, "美多巴", style:"font-size:20px", class:"btn-info", id:"feature41"%></td>
+            <td><%= f.radio_button :meiDuoBa, 0 %> 是
+            <%= f.radio_button :meiDuoBa, 1%> 否
+            <%= f.radio_button :meiDuoBa, 2%> 未知<br/></td>
+            <td style="width:150px"><%= f.label "服用时间"%>
+            <div class="input-group">
+                <%= f.number_field :meiDuoBaTime, in: 0..200, step:1 , class:"form-control"%>
+                <span class=input-group-addon>年</span>
+            </div> 
+            <div class="input-group">
+                <%= f.number_field :meiDuoBaMonth, in: 0..11, step:1 , class:"form-control"%>
+                <span class=input-group-addon>月</span>
+        </div></td>
+            <td><%= f.label "治疗效果"%>
+            <%= f.text_field :meiDuoBaResult, class:"form-control"%></td>
+        </div> 
+    </tr>
+    <tr>
+        <div class="form-group">
+            <td><%= f.label :miDuoJun, "米多君", style:"font-size:20px", class:"btn-info", id:"feature42"%></td>
+            <td><%= f.radio_button :miDuoJun, 0 %> 是
+            <%= f.radio_button :miDuoJun, 1%> 否
+            <%= f.radio_button :miDuoJun, 2%> 未知<br/></td>
+            <td><%= f.label "服用时间"%>
+            <div class="input-group">
+                <%= f.number_field :miDuoJunTime, in: 0..200, step:1 , class:"form-control"%>
+                <span class=input-group-addon>年</span>
+            </div> 
+            <div class="input-group">
+                <%= f.number_field :miDuoJunMonth, in: 0..11, step:1 , class:"form-control"%>
+                <span class=input-group-addon>月</span>
+            </div></td>
+            <td><%= f.label "治疗效果"%>
+            <%= f.text_field :miDuoJunResult, class:"form-control"%></td>
+        </div> 
+    </tr>
+    
+    <tr>
+        <div class="form-group">
+            <td><%= f.label :otherMedicine, "其它西药", style:"font-size:20px", class:"btn-info", id:"feature43"%></td>
+            <td><%= f.radio_button :otherMedicine, 0 %> 是
+            <%= f.radio_button :otherMedicine, 1%> 否
+            <%= f.radio_button :otherMedicine, 2%> 未知<br/></td>
+            <td><%= f.label "服用时间"%>
+            <div class="input-group">
+                <%= f.number_field :otherMedicineTime, in: 0..200, step:1 , class:"form-control"%>
+                <span class=input-group-addon>年</span>
+            </div> 
+            <div class="input-group">
+                <%= f.number_field :otherMedicineMonth, in: 0..11, step:1 , class:"form-control"%>
+                <span class=input-group-addon>月</span>
+            </div></td>
+            <td><%= f.label "治疗效果"%>
+            <%= f.text_field :otherMedicineResult, class:"form-control"%></td>
+        </div> 
+    </tr>
+    <tr>
+        <div class="form-group">
+            <td><%= f.label :chineseMedicine, "中药", style:"font-size:20px", class:"btn-info", id:"feature44"%></td>
+            <td><%= f.radio_button :chineseMedicine, 0 %> 是
+            <%= f.radio_button :chineseMedicine, 1%> 否
+            <%= f.radio_button :chineseMedicine, 2%> 未知<br/></td>
+            <td><%= f.label "服用时间"%>
+            <div class="input-group">
+                <%= f.number_field :chineseMedicineTime, in: 0..200, step:1 , class:"form-control"%>
+                <span class=input-group-addon>年</span>
+            </div> 
+            <div class="input-group">
+                <%= f.number_field :chineseMedicineMonth, in: 0..11, step:1 , class:"form-control"%>
+                <span class=input-group-addon>月</span>
+            </div></td>
+            <td><%= f.label "治疗效果"%>
+            <%= f.text_field :chineseMedicineResult, class:"form-control"%></td>
+        </div> 
+    </tr>
+</table>
+
+
+<button class="btn btn-warning btn-lg">家族史</button>
+<table class="table table-condensed">
+    <tr>
+        <div class="form-group">
+            <td><%= f.label :nearPhens, "与患者接近表型", style:"font-size:20px", class:"btn-info", id:"feature46"%></td>
+            <td><%= f.radio_button :nearPhens, 0 %> 是
+            <%= f.radio_button :nearPhens, 1%> 否
+            <%= f.radio_button :nearPhens, 2%> 未知<br/></td>
+            <td><%= f.label "详细情况"%>
+            <%= f.text_field :nearPhensWords, class:"form-control"%></td>
+        </div> 
+    </tr>
+    <tr>
+        <div class="form-group">
+            <td><%= f.label :parkinson, "帕金森病", style:"font-size:20px", class:"btn-info", id:"feature47"%></td>
+            <td><%= f.radio_button :parkinson, 0 %> 是
+            <%= f.radio_button :parkinson, 1%> 否
+            <%= f.radio_button :parkinson, 2%> 未知<br/></td>
+            <td><%= f.label "详细情况"%>
+            <%= f.text_field :parkinsonWords, class:"form-control"%></td>
+        </div> 
+    </tr>
+    <tr>
+        <div class="form-group">
+            <td><%= f.label :ataxia, "共济失调", style:"font-size:20px", class:"btn-info", id:"feature48"%></td>
+            <td><%= f.radio_button :ataxia, 0 %> 是
+            <%= f.radio_button :ataxia, 1%> 否
+            <%= f.radio_button :ataxia, 2%> 未知<br/></td>
+            <td><%= f.label "详细情况"%>
+            <%= f.text_field :ataxiaWords, class:"form-control"%></td>
+        </div> 
+    </tr>
+    <tr>
+        <div class="form-group">
+            <td><%= f.label :sleepHard, "睡眠行为障碍", style:"font-size:20px", class:"btn-info", id:"feature49"%></td>
+            <td><%= f.radio_button :sleepHard, 0 %> 是
+            <%= f.radio_button :sleepHard, 1%> 否
+            <%= f.radio_button :sleepHard, 2%> 未知<br/></td>
+            <td><%= f.label "详细情况"%>
+            <%= f.text_field :sleepHardWords, class:"form-control"%></td>
+        </div> 
+    </tr>
+    <tr>
+        <div class="form-group">
+            <td><%= f.label :lowPressure, "低血压", style:"font-size:20px", class:"btn-info", id:"feature50"%></td>
+    <td><%= f.radio_button :lowPressure, 0 %> 是
+    <%= f.radio_button :lowPressure, 1%> 否
+    <%= f.radio_button :lowPressure, 2%> 未知<br/></td>
+    <td><%= f.label "详细情况"%>
+    <%= f.text_field :lowPressureWords, class:"form-control"%></td>
+        </div> 
+    </tr>
+    <tr>
+        <div class="form-group">
+            <td><%= f.label :perceptHard, "认知障碍", style:"font-size:20px", class:"btn-info", id:"feature51"%></td>
+    <td><%= f.radio_button :perceptHard, 0 %> 是
+    <%= f.radio_button :perceptHard, 1%> 否
+    <%= f.radio_button :perceptHard, 2%> 未知<br/></td>
+    <td><%= f.label "详细情况"%>
+    <%= f.text_field :perceptHardWords, class:"form-control"%></td>
+        </div> 
+    </tr>
+    <tr>
+        <td><%= f.label "其它", style:"font-size:20px", class:"btn-info", id:"feature52"%>
+<%= f.text_field :extraMedicineWords, class:"form-control"%></td></tr>
+</table>
+
+<button class="btn btn-warning btn-lg">个人史</button>
+<table class="table table-condensed">
+    <tr>
+        <div class="form-group">
+            <td><%= f.label :wine, "饮酒史", style:"font-size:20px", class:"btn-info", id:"feature54"%></td>
+            <td><%= f.radio_button :wine, 0 %> 是
+            <%= f.radio_button :wine, 1%> 否
+            <%= f.radio_button :wine, 2%> 未知<br/></td>
+            <td style="width:150px"><%= f.label "持续时间"%>
+            <div class="input-group">
+                <%= f.number_field :wineTime, in: 0..200, step:1 , class:"form-control"%>
+                <span class=input-group-addon>年</span>
+            </div> 
+            <div class="input-group">
+                <%= f.number_field :wineMonth, in: 0..11, step:1 , class:"form-control"%>
+                <span class=input-group-addon>月</span>
+        </div></td>
+            <td style="width:150px"><%= f.label "戒酒时间"%>
+            <div class="input-group">
+                <%= f.number_field :wineStopTime, in: 0..200, step:1 , class:"form-control"%>
+                <span class=input-group-addon>年</span>
+            </div> 
+            <div class="input-group">
+                <%= f.number_field :wineStopMonth, in: 0..11, step:1 , class:"form-control"%>
+                <span class=input-group-addon>月</span>
+            </div></td>
+            <td><%= f.label "饮酒量"%>
+                    <div class="input-group" style="width:120px">
+                    <%= f.number_field :wineNumber, in: 0..1000, step:1, class:"form-control"%>
+                    <span class="input-group-addon">斤</span>
+                    </div></td>
+        </div> 
+    </tr>
+    <tr>
+        <div class="form-group">
+            <td><%= f.label :smoke, "吸烟史", style:"font-size:20px", class:"btn-info", id:"feature55"%></td>
+            <td><%= f.radio_button :smoke, 0 %> 是
+            <%= f.radio_button :smoke, 1%> 否
+            <%= f.radio_button :smoke, 2%> 未知<br/></td>
+            <td><%= f.label "吸烟时间"%>
+            <div class="input-group">
+                <%= f.number_field :smokeTime, in: 0..200, step:1 , class:"form-control"%>
+                <span class=input-group-addon>年</span>
+            </div> 
+            <div class="input-group">
+                <%= f.number_field :smokeMonth, in: 0..11, step:1 , class:"form-control"%>
+                <span class=input-group-addon>月</span>
+            </div> </td>
+            <td><%= f.label "戒烟时间"%>
+            <div class="input-group">
+                <%= f.number_field :smokeStopTime, in: 0..200, step:1 , class:"form-control"%>
+                <span class=input-group-addon>年</span>
+            </div> 
+            <div class="input-group">
+                <%= f.number_field :smokeStopMonth, in: 0..11, step:1 , class:"form-control"%>
+                <span class=input-group-addon>月</span>
+            </div></td>
+            <td><%= f.label "吸烟量"%>
+                    <div class="input-group" style="width:120px">
+                    <%= f.number_field :smokeNumber, in: 0..1000, step:1, class:"form-control"%>
+                    <span class="input-group-addon">根</span>
+                    </div></td>
+        </div> 
+    </tr>
+    <tr>
+        <div class="form-group">
+            <td><%= f.label :pesticide, "农药接触史", style:"font-size:20px", class:"btn-info", id:"feature56"%></td>
+            <td><%= f.radio_button :pesticide, 0 %> 是
+            <%= f.radio_button :pesticide, 1%> 否
+            <%= f.radio_button :pesticide, 2%> 未知<br/></td>
+            <td><%= f.label "接触时间"%>
+            <div class="input-group">
+                <%= f.number_field :pesticideTime, in: 0..200, step:1 , class:"form-control"%>
+                <span class=input-group-addon>年</span>
+            </div> 
+            <div class="input-group">
+                <%= f.number_field :pesticideMonth, in: 0..11, step:1 , class:"form-control"%>
+                <span class=input-group-addon>月</span>
+            </div></td>
+            <td><%= f.label "频率"%>
+                    <div class="input-group" style="width:120px">
+                    <%= f.number_field :pesticideNumber, in: 0..1000, step:1, class:"form-control"%>
+                    <span class="input-group-addon">次</span>
+                    </div></td>
+                <td><%= f.label "程度"%>
+                <%= f.text_field :pesticideWords, class:"form-control"%></td>
+        </div> 
+</tr>
+    <tr>
+        <div class="form-group">
+            <td><%= f.label :chemical, "有毒化学物接触史", style:"font-size:20px", class:"btn-info", id:"feature57"%></td>
+            <td><%= f.radio_button :chemical, 0 %> 是
+            <%= f.radio_button :chemical, 1%> 否
+            <%= f.radio_button :chemical, 2%> 未知<br/></td>
+            <td><%= f.label "接触时间"%>
+            <div class="input-group">
+                <%= f.number_field :chemicalTime, in: 0..200, step:1 , class:"form-control"%>
+                <span class=input-group-addon>年</span>
+            </div> 
+            <div class="input-group">
+                <%= f.number_field :chemicalMonth, in: 0..11, step:1 , class:"form-control"%>
+                <span class=input-group-addon>月</span>
+            </div></td>
+            <td><%= f.label "频率"%>
+                    <div class="input-group" style="width:120px">
+                    <%= f.number_field :chemicalNumber, in: 0..1000, step:1, class:"form-control"%>
+                    <span class="input-group-addon">次</span>
+                    </div></td>
+                <td><%= f.label "程度"%>
+                <%= f.text_field :chemicalWords, class:"form-control"%></td>
+        </div> 
+    </tr>
+    <tr>
+        <div class="form-group">
+            <td><%= f.label :noO2, "缺氧地区生活史", style:"font-size:20px", class:"btn-info", id:"feature58"%></td>
+    <td><%= f.radio_button :noO2, 0 %> 是
+    <%= f.radio_button :noO2, 1%> 否
+    <%= f.radio_button :noO2, 2%> 未知<br/></td>
+    <td><%= f.label "生活时间"%>
+    <div class="input-group">
+        <%= f.number_field :noO2Time, in: 0..200, step:1 , class:"form-control"%>
+        <span class=input-group-addon>年</span>
+    </div> 
+    <div class="input-group">
+        <%= f.number_field :noO2Month, in: 0..11, step:1 , class:"form-control"%>
+        <span class=input-group-addon>月</span>
+    </div></td>
+    </div>
+   </tr>
+</table>
+            <%= f.label "补充说明", style:"font-size:20px", class:"btn-info"%>
+<%= f.text_area :suppleWords, class:"form-control",rows:"5"%>

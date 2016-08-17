@@ -1,0 +1,11 @@
+<%= form_for @beforeHistory, url: current_history_record_before_history_record_path(@current_history_record), :method => :post do |f| %>
+    <%= render :partial => "form", locals: {:f => f}%>
+    <%= f.submit "输入既往史,用药史,家族史和个人史", class:"btn btn-lg btn-success"%>
+<% end %>
+
+<%= content_for :side_bar do%>
+    <%= render "shared/sidebar" %>
+<% end %>
+<%= content_for :side_bar2 do%>
+    <%= render :partial => "beforeList" %>
+<% end %>

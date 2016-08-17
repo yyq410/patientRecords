@@ -1,0 +1,14 @@
+<button class="btn btn-danger btn-lg">病人信息</button>
+<table class="table table-bordered table-striped">
+<tr><td>姓名</td><td><%= label_tag(f.name)%></td></tr> 
+<tr><td>性别</td>
+    <td><% if f.gender %>
+        男
+    <% else %>
+            女
+        <% end %>
+        </td></tr>
+<tr><td>年龄</td><td><%= label_tag(f.age)%></td></tr>
+<tr><td>身份证号</td><td><%= label_tag(f.idnumber)%></td></tr>
+<tr><td>工作</td><td><%= label_tag(f.work)%></td></tr>
+</table>

@@ -1,0 +1,2 @@
+module CurrentHistoryRecordsHelper
+end

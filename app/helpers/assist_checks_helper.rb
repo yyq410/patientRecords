@@ -1,0 +1,2 @@
+module AssistChecksHelper
+end

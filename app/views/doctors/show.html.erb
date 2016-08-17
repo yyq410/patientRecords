@@ -4,4 +4,5 @@
 <%= @doctor.name %><br/>
 <h3><%= label_tag("邮箱")%><br/></h3>
 <%= @doctor.email %><br/>
+<%= link_to "修改信息", edit_doctor_path(@doctor)%>
 <% end %>

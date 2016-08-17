@@ -1,0 +1,11 @@
+<%= form_for @nervousSystem, url: edit_before_history_record_nervous_system_path(@before_history_record), :method=>:post do |f|%>
+<%= render :partial => "form", locals: {:f => f}%>
+<%= f.submit "编辑神经查体", class:"btn btn-success btn-lg" %>
+<% end %>
+<%= link_to "查看辅助检查和拟诊", nervous_system_assist_check_path(@nervousSystem), class:"btn btn-lg btn-link"%>
+<% content_for :side_bar do %>
+    <%= render "shared/sidebar"%>
+<% end %>
+<% content_for :side_bar2 do %>
+    <%= render :partial => "nervousList"%>
+<% end %>

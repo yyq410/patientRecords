@@ -1,0 +1,280 @@
+<button class="btn btn-lg btn-warning">神经查体</button>
+<table class="table table-condensed">
+    <tr>
+        <div class="form-group">
+            <td><%= f.label :smartCheck, "智能检查", style:"font-size:20px", class:"btn-info", id:"feature59"%></td>
+            <td><%= f.radio_button :smartCheck, 0 %> 是
+            <%= f.radio_button :smartCheck, 1%> 否
+            <%= f.radio_button :smartCheck, 2%> 未知<br/></td>
+        <td style="width:150px"><%= f.label "定向力"%>
+        <%= f.text_field :smartdForce, class:"form-control"%></td>
+            <td style="width:150px"><%= f.label "计算力"%>
+        <%= f.text_field :smartCompute, class:"form-control"%></td>
+       </div>
+   </tr>
+    <tr>
+        <div class="form-group">
+            <td><%= f.label :voiceHard, "构音障碍", style:"font-size:20px", class:"btn-info", id:"feature60"%></td>
+             <td><%= f.radio_button :voiceHard, 0 %> 是
+            <%= f.radio_button :voiceHard, 1%> 否
+            <%= f.radio_button :voiceHard, 2%> 未知<br/></td>
+             <td><%= f.label "分级"%>
+             <%= f.select :voiceHardScale,options_for_select({"正常"=>0, "轻度"=>1, "中度"=>2,"重度"=>3}, @nervousSystem.voiceHardScale) ,{include_blank:true} , class:"form-control"%></td>
+             <td><%= f.label "详细情况"%>
+             <%= f.text_field :voiceHardWords, class:"form-control"%></td>
+       </div>
+   </tr>
+   <tr>
+       <div class="form-group">
+            <td><%= f.label :stridor, "喘鸣", style:"font-size:20px", class:"btn-info", id:"feature61"%></td>
+            <td> <%= f.radio_button :stridor, 0 %> 是
+            <%= f.radio_button :stridor, 1%> 否
+            <%= f.radio_button :stridor, 2%> 未知<br/></td>
+        <td> <%= f.label "出现时间"%>
+            <div class="input-group">
+                <%= f.number_field :stridorTime, in: 0..200, step:1 , class:"form-control"%>
+                <span class=input-group-addon>年</span>
+        </div> 
+          <div class="input-group">
+                <%= f.number_field :stridorMonth, in: 0..11, step:1 , class:"form-control"%>
+                <span class=input-group-addon>月</span>
+            </div> </td>
+            <td> <%= f.label "详细情况"%>
+            <%= f.text_field :stridorWords, class:"form-control"%> </td>
+       </div>
+   </tr>
+   
+   <tr style="width:150px">
+       <div class="form-group">
+           <td><%= f.label :nystagmus, "眼震", style:"font-size:20px", class:"btn-info", id:"feature62"%></td>
+           <td>    <%= f.radio_button :nystagmus, 0 %> 是
+            <%= f.radio_button :nystagmus, 1%> 否
+            <%= f.radio_button :nystagmus, 2%> 未知<br/></td>
+        <td> <%= f.label "详细情况"%>
+        <%= f.text_field :nystagmusWords, class:"form-control"%></td>
+       </div>
+   </tr>
+   <tr>
+       <div class="form-group">
+           <td><%= f.label :eyeMove, "眼动", style:"font-size:20px", class:"btn-info", id:"feature63"%></td>
+    <td><%= f.radio_button :eyeMove, 0 %> 是
+    <%= f.radio_button :eyeMove, 1%> 否
+    <%= f.radio_button :eyeMove, 2%> 未知<br/></td>
+    <td><%= f.label "详细情况"%>
+<%= f.text_field :eyeMoveWords, class:"form-control"%></td>
+       </div>
+   </tr>
+   <tr>
+       <div class="form-group">
+           <td><%= f.label :muscleVolumn, "肌容积", style:"font-size:20px", class:"btn-info", id:"feature64"%></td>
+           <td><%= f.radio_button :muscleVolumn, 0 %> 是
+    <%= f.radio_button :muscleVolumn, 1%> 否
+    <%= f.radio_button :muscleVolumn, 2%> 未知<br/></td>
+<td>    <%= f.label "上肢是否萎缩"%><br/>
+    <%= f.radio_button :muscleUpSmall, 0 %>是
+    <%= f.radio_button :muscleUpSmall, 1%> 否</td>
+<td>    <%= f.label "下肢是否萎缩"%><br/>
+    <%= f.radio_button :muscleDownSmall, 0 %>是
+    <%= f.radio_button :muscleDownSmall, 1%> 否</td>
+<td>    <%= f.label "详细情况"%>
+<%= f.text_field :muscleVolumnWords, class:"form-control"%></td>
+       </div>
+   </tr>
+    <tr>
+        <div class="form-group">
+            <td><%= f.label :foursPower, "四肢肌力", style:"font-size:20px", class:"btn-info", id:"feature65"%></td>
+            <td>   <%= f.radio_button :foursPower, 0 %> 是
+    <%= f.radio_button :foursPower, 1%> 否
+    <%= f.radio_button :foursPower, 2%> 未知<br/></td>
+<td>    <%= f.label "分级"%>
+<%= f.select :foursPowerScale,options_for_select({"I"=>0, "II"=>1, "III"=>2,"IV"=>3, "V"=>4}, @nervousSystem.foursPowerScale) ,{include_blank:true} , class:"form-control"%></td>
+<td>    <%= f.label "详细情况"%>
+<%= f.text_field :foursPowerWords, class:"form-control"%></td>
+       </div>
+   </tr>
+    <tr>
+        <div class="form-group">
+            <td><%= f.label :musclePower, "肌张力", style:"font-size:20px", class:"btn-info", id:"feature66"%></td>
+            <td>    <%= f.radio_button :musclePower, 0 %> 是
+    <%= f.radio_button :musclePower, 1%> 否
+    <%= f.radio_button :musclePower, 2%> 未知<br/></td>
+<td>    <%= f.label "左上肢"%>
+<%= f.select :musclePowerLeftUp,options_for_select({"正常"=>0, "降低"=>1, "增高"=>2}, @nervousSystem.musclePowerLeftUp) ,{include_blank:true} , class:"form-control"%></td>
+<td>    <%= f.label "左下肢"%>
+<%= f.select :musclePowerLeftDown,options_for_select({"正常"=>0, "降低"=>1, "增高"=>2}, @nervousSystem.musclePowerLeftDown) ,{include_blank:true} , class:"form-control"%></td>
+<td>    <%= f.label "右上肢"%>
+<%= f.select :musclePowerRightUp,options_for_select({"正常"=>0, "降低"=>1, "增高"=>2}, @nervousSystem.musclePowerRightUp) ,{include_blank:true} , class:"form-control"%></td>
+<td>    <%= f.label "右下肢"%>
+<%= f.select :musclePowerRightDown,options_for_select({"正常"=>0, "降低"=>1, "增高"=>2}, @nervousSystem.musclePowerRightDown) ,{include_blank:true} , class:"form-control"%></td>
+       </div>
+   </tr>
+
+    <tr>
+        <div class="form-group">
+            <td><%= f.label :reflex, "腱反射", style:"font-size:20px", class:"btn-info", id:"feature67"%></td>
+            <td> <%= f.radio_button :reflex, 0 %> 是
+    <%= f.radio_button :reflex, 1%> 否
+    <%= f.radio_button :reflex, 2%> 未知<br/></td>
+<td>    <%= f.label "左上肢"%>
+<%= f.select :reflexLeftUp,options_for_select({"正常"=>0, "活跃"=>1, "亢进"=>2, "减弱"=>-1, "未引出"=>-2}, @nervousSystem.reflexLeftUp) ,{include_blank:true} , class:"form-control"%></td>
+<td>    <%= f.label "左下肢"%>
+<%= f.select :reflexLeftDown,options_for_select({"正常"=>0, "活跃"=>1, "亢进"=>2, "减弱"=>-1, "未引出"=>-2}, @nervousSystem.reflexLeftDown) ,{include_blank:true} , class:"form-control"%></td>
+<td>    <%= f.label "右上肢"%>
+<%= f.select :reflexRightUp,options_for_select({"正常"=>0, "活跃"=>1, "亢进"=>2, "减弱"=>-1, "未引出"=>-2}, @nervousSystem.reflexRightUp) ,{include_blank:true} , class:"form-control"%></td>
+<td>    <%= f.label "右下肢"%>
+<%= f.select :reflexRightDown,options_for_select({"正常"=>0, "活跃"=>1, "亢进"=>2, "减弱"=>-1, "未引出"=>-2}, @nervousSystem.reflexRightDown) ,{include_blank:true} , class:"form-control"%></td>
+       </div>
+   </tr>
+    <tr>
+        <div class="form-group">
+            <td><%= f.label :babinski, "Babinshki征", style:"font-size:20px", class:"btn-info", id:"feature68"%></td>
+            <td>    <%= f.radio_button :babinski, 0 %> 是
+    <%= f.radio_button :babinski, 1%> 否
+    <%= f.radio_button :babinski, 2%> 未知<br/></td>
+<td>    <%= f.label "左侧"%>
+<%= f.select :babinskiLeft,options_for_select({"-"=>0, "+"=>1, "++"=>2}, @nervousSystem.babinskiLeft) ,{include_blank:true} , class:"form-control"%></td>
+<td>    <%= f.label "右侧"%>
+<%= f.select :babinskiRight,options_for_select({"-"=>0, "+"=>1, "++"=>2}, @nervousSystem.babinskiRight) ,{include_blank:true} , class:"form-control"%></td>
+       </div>
+   </tr>
+    <tr>
+        <div class="form-group">
+            <td><%= f.label :hoffman, "Hoffman征", style:"font-size:20px", class:"btn-info", id:"feature69"%></td>
+            <td>    <%= f.radio_button :hoffman, 0 %> 是
+    <%= f.radio_button :hoffman, 1%> 否
+    <%= f.radio_button :hoffman, 2%> 未知<br/></td>
+<td>    <%= f.label "左侧"%>
+<%= f.select :hoffmanLeft,options_for_select({"-"=>0, "+"=>1, "++"=>2}, @nervousSystem.hoffmanLeft) ,{include_blank:true} , class:"form-control"%></td>
+<td>    <%= f.label "右侧"%>
+<%= f.select :hoffmanRight,options_for_select({"-"=>0, "+"=>1, "++"=>2}, @nervousSystem.hoffmanRight) ,{include_blank:true} , class:"form-control"%></td>
+       </div>
+   </tr>
+    <tr>
+        <div class="form-group">
+            <td><%= f.label :nosePoint, "指鼻试验", style:"font-size:20px", class:"btn-info", id:"feature70"%></td>
+            <td>    <%= f.radio_button :nosePoint, 0 %> 是
+    <%= f.radio_button :nosePoint, 1%> 否
+    <%= f.radio_button :nosePoint, 2%> 未知<br/></td>
+<td>    <%= f.label "左侧"%>
+<%= f.select :nosePointLeft,options_for_select({"正常"=>0, "轻度不稳"=>1, "中度不稳"=>2, "重度不稳"=>3,"不能完成"=>4}, @nervousSystem.nosePointLeft) ,{include_blank:true} , class:"form-control"%></td>
+<td>    <%= f.label "右侧"%>
+<%= f.select :nosePointRight,options_for_select({"正常"=>0, "轻度不稳"=>1, "中度不稳"=>2, "重度不稳"=>3,"不能完成"=>4}, @nervousSystem.nosePointRight) ,{include_blank:true} , class:"form-control"%></td>
+       </div>
+   </tr>
+    <tr>
+        <div class="form-group">
+            <td><%= f.label :heelToKnee, "跟膝胫试验", style:"font-size:20px", class:"btn-info", id:"feature71"%></td>
+            <td><%= f.radio_button :heelToKnee, 0 %> 是
+    <%= f.radio_button :heelToKnee, 1%> 否
+    <%= f.radio_button :heelToKnee, 2%> 未知<br/></td>
+<td>    <%= f.label "左侧"%>
+<%= f.select :heelToKneeLeft,options_for_select({"正常"=>0, "轻度不稳"=>1, "中度不稳"=>2, "重度不稳"=>3,"不能完成"=>4}, @nervousSystem.heelToKneeLeft) ,{include_blank:true} , class:"form-control"%></td>
+<td>    <%= f.label "右侧"%>
+<%= f.select :heelToKneeRight,options_for_select({"正常"=>0, "轻度不稳"=>1, "中度不稳"=>2, "重度不稳"=>3,"不能完成"=>4}, @nervousSystem.heelToKneeRight) ,{include_blank:true} , class:"form-control"%></td>
+       </div>
+   </tr>
+    <tr>
+        <div class="form-group">
+            <td><%= f.label :spellMotion, "轮替动作", style:"font-size:20px", class:"btn-info", id:"feature72"%></td>
+            <td>    <%= f.radio_button :spellMotion, 0 %> 是
+    <%= f.radio_button :spellMotion, 1%> 否
+    <%= f.radio_button :spellMotion, 2%> 未知<br/></td>
+<td>    <%= f.label "左侧"%>
+<%= f.select :spellMotionLeft,options_for_select({"正常"=>0, "轻度不稳"=>1, "中度不稳"=>2, "重度不稳"=>3,"不能完成"=>4}, @nervousSystem.spellMotionLeft) ,{include_blank:true} , class:"form-control"%></td>
+<td>    <%= f.label "右侧"%>
+<%= f.select :spellMotionRight,options_for_select({"正常"=>0, "轻度不稳"=>1, "中度不稳"=>2, "重度不稳"=>3,"不能完成"=>4}, @nervousSystem.spellMotionRight) ,{include_blank:true} , class:"form-control"%></td>
+       </div>
+   </tr>
+    <tr>
+        <div class="form-group">
+            <td><%= f.label :gaitNat, "自然步态", style:"font-size:20px", class:"btn-info", id:"feature73"%></td>
+            <td>    <%= f.radio_button :gaitNat, 0 %> 是
+    <%= f.radio_button :gaitNat, 1%> 否
+    <%= f.radio_button :gaitNat, 2%> 未知<br/></td>
+<td>    <%= f.label "状态"%>
+<%= f.select :gaitNatScale,options_for_select({"正常"=>0, "轻度不稳"=>1, "中度不稳"=>2, "重度不稳"=>3,"不能完成"=>4}, @nervousSystem.gaitNatScale) ,{include_blank:true} , class:"form-control"%></td>
+<td>    <%= f.label "详细情况"%>
+<%= f.text_field :gaitNatWords, class:"form-control"%></td>
+       </div>
+   </tr>
+    <tr>
+        <div class="form-group">
+            <td><%= f.label :gaitSer, "串联步态", style:"font-size:20px", class:"btn-info", id:"feature74"%></td>
+            <td>    <%= f.radio_button :gaitSer, 0 %> 是
+    <%= f.radio_button :gaitSer, 1%> 否
+    <%= f.radio_button :gaitSer, 2%> 未知<br/></td>
+<td>    <%= f.label "状态"%>
+<%= f.select :gaitSerScale,options_for_select({"正常"=>0, "轻度不稳"=>1, "中度不稳"=>2, "重度不稳"=>3,"不能完成"=>4}, @nervousSystem.gaitSerScale) ,{include_blank:true} , class:"form-control"%></td>
+<td>    <%= f.label "详细情况"%>
+<%= f.text_field :gaitSerWords, class:"form-control"%></td>
+       </div>
+   </tr>
+    <tr>
+        <div class="form-group">
+            <td><%= f.label :gaitCom, "并足站立", style:"font-size:20px", class:"btn-info", id:"feature75"%></td>
+            <td><%= f.radio_button :gaitCom, 0 %> 是
+    <%= f.radio_button :gaitCom, 1%> 否
+    <%= f.radio_button :gaitCom, 2%> 未知<br/></td>
+<td>    <%= f.label "状态"%>
+<%= f.select :gaitComScale,options_for_select({"正常"=>0, "轻度不稳"=>1, "中度不稳"=>2, "重度不稳"=>3,"不能完成"=>4}, @nervousSystem.gaitComScale) ,{include_blank:true} , class:"form-control"%></td>
+<td>    <%= f.label "详细情况"%>
+<%= f.text_field :gaitComWords, class:"form-control"%></td>
+       </div>
+   </tr>
+    <tr>
+        <div class="form-group">
+            <td><%= f.label :poseReflect, "姿势反射", style:"font-size:20px", class:"btn-info", id:"feature76"%></td>
+            <td>    <%= f.radio_button :poseReflect, 0 %> 是
+    <%= f.radio_button :poseReflect, 1%> 否
+    <%= f.radio_button :poseReflect, 2%> 未知<br/></td>
+<td>    <%= f.label "状态"%>
+<%= f.select :poseReflectScale,options_for_select({"正常"=>0, "轻度减弱"=>1, "中度减弱"=>2, "消失"=>3}, @nervousSystem.poseReflectScale) ,{include_blank:true} , class:"form-control"%></td>
+<td>    <%= f.label "详细情况"%>
+<%= f.text_field :poseReflectWords, class:"form-control"%></td>
+       </div>
+   </tr>
+    <tr>
+        <div class="form-group">
+            <td><%= f.label :poseFormer, "前驱姿势", style:"font-size:20px", class:"btn-info", id:"feature77"%></td>
+            <td>    <%= f.radio_button :poseFormer, 0 %> 是
+    <%= f.radio_button :poseFormer, 1%> 否
+    <%= f.radio_button :poseFormer, 2%> 未知<br/></td>
+<td>    <%= f.label "状态"%>
+<%= f.select :poseFormerScale,options_for_select({"正常"=>0, "轻度减弱"=>1, "中度减弱"=>2, "消失"=>3}, @nervousSystem.poseFormerScale) ,{include_blank:true} , class:"form-control"%></td>
+<td>    <%= f.label "详细情况"%>
+<%= f.text_field :poseFormerWords, class:"form-control"%></td>
+       </div>
+   </tr>
+   <tr>
+       <div class="form-group">
+           <td><%= f.label :bedPressure, "卧位血压", style:"font-size:20px", class:"form-control", class:"btn-info", id:"feature78"%></td>
+           <td>           <%=f.label "高压"%>
+           <%= f.number_field :bedPressureHigh, in: 0..1000, step:1, class:'form-control'%></td>
+           <td>           <%= f.label "低压"%>
+           <%= f.number_field :bedPressureLow, in:0..1000, step:1, class:"form-control" %></td>
+        </div>
+    </tr>
+   <tr>
+       <div class="form-group">
+           <td><%= f.label :chairPressure, "坐位血压", style:"font-size:20px", class:"form-control", class:"btn-info", id:"feature79"%></td>
+           <td>       <%=f.label "高压"%>
+           <%= f.number_field :chairPressureHigh, in: 0..1000, step:1, class:'form-control'%></td>
+           <td>           <%= f.label "低压"%>
+           <%= f.number_field :chairPressureLow, in:0..1000, step:1, class:"form-control" %></td>
+        </div>
+   </tr>
+   <tr>
+       <div class="form-group">
+           <td><%= f.label :upPressure, "站位血压", style:"font-size:20px", class:"form-control", class:"btn-info", id:"feature80"%></td>
+           <td>           <%=f.label "高压"%>
+           <%= f.number_field :upPressureHigh, in: 0..1000, step:1, class:'form-control'%></td>
+           <td>           <%= f.label "低压"%>
+           <%= f.number_field :upPressureLow, in:0..1000, step:1, class:"form-control" %></td>
+        </div>
+   </tr>
+</table>
+        <div class="form-group">
+            <td><%= f.label "补充说明", style:"font-size:20px", class:"btn btn-info", id:"feature81"%></td>
+            <%= f.text_area :extraNervousText, class:"form-control", rows:5%>
+        </div>
+   

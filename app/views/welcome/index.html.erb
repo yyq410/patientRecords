@@ -1,13 +1,14 @@
 <p>欢迎使用PatientRecords, 方便医生录入、管理和分析病历~</p>
 <% if logged_in? %>
-    <%= link_to "新建病历", new_patient_path %>
+    <%= link_to "添加病人", new_patient_path %>
         <table class="table table-hover">
             <tr><th>病人姓名</th><th>操作</th></tr>
     <% @current_doctor.patients.each do |p|%>
-            <tr><td><%= p.name %></td>
-                <td><%= link_to "病历", patient_path(p)%>
-            <%= link_to "编辑", edit_patient_path(p)%>
-            <%= button_to "删除", patient_path(p), :method => :delete %></td></tr>
+            <tr><td><%= link_to p.name, patient_path(p) %></td>
+                <td><%= link_to "编辑病人信息", edit_patient_path(p)%>
+                <%= link_to "删除", patient_path(p), :method => :delete, class: "btn btn-warning"%>  <%= link_to "新建病历", new_patient_current_history_record_path(p), class: "btn btn-success"%>  <%= link_to "查看病历", patient_current_history_records_path(p), class:"btn btn-primary"%></td>
+            </tr>
+       
     <% end %>
         </table>
 <% end %>

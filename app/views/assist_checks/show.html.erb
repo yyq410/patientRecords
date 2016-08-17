@@ -1,0 +1,13 @@
+<%= form_for @assistCheck, url: edit_nervous_system_assist_check_path(@nervous_system), :method=>:post do |f|%>
+<%= render :partial => "form", locals: {:f => f}%>
+<%= f.submit "编辑辅助检查和拟诊", class:"btn btn-success btn-lg" %>
+<% end %>
+
+<%== link_to "返回", root_path, class:"btn btn-lg btn-link"%>
+
+<% content_for :side_bar do %>
+    <%= render "shared/sidebar"%>
+<% end %>
+<% content_for :side_bar2 do %>
+    <%= render :partial => "assistList"%>
+<% end %>

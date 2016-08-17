@@ -1,0 +1,13 @@
+<%= render :partial => "patient_info", locals: {:f => @patient} %>
+
+<%= form_for @currentHistory, url: patient_current_history_records_path(@patient) do |f|%>
+    <%= render :partial => "form", locals: {:f => f}%>
+    <%= f.submit "输入现病史", class:"btn btn-success btn-lg" %>
+<% end %>
+
+<% content_for :side_bar do %>
+    <%= render "shared/sidebar"%>
+<% end %>
+<% content_for :side_bar2 do %>
+    <%= render :partial => "currentList"%>
+<% end %>

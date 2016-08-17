@@ -1,0 +1,37 @@
+<div class="row">
+<div class="col-md-4">
+<table class="table table-striped">
+    <tr>
+        <td>
+            <%= label_tag("姓名")%>
+        </td>
+        <td><%= @patient.name %></td>
+    </tr>
+    <tr><td><%= label_tag("性别")%></td>
+        <td> 
+            <% if @patient.gender %>
+                男
+            <% else %>
+                女
+            <% end %>
+        </td>
+    </tr>
+    <tr><td><%= label_tag("年龄") %></td>
+        <td><%= @patient.age %></td>
+    </tr>
+    <tr><td><%= label_tag("身份证号") %></td>
+        <td><%= @patient.idnumber %></td>
+    </tr>
+    <tr><td><%= label_tag("工作") %></td>
+        <td><%= @patient.work %></td>
+    </tr>
+    <tr><td><%= label_tag("文化水平") %></td>
+        <td><%= @patient.education %></td>
+    </tr>
+
+</table>
+</div>
+</div>
+<% content_for :side_bar do %>
+    <%= render "shared/sidebar"%>
+<% end %>

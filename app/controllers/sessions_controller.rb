@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     doctor = Doctor.find_by(name: params[:session][:name])
     if doctor && doctor.authenticate(params[:session][:password])
         log_in doctor
-        redirect_to doctor_path(doctor)
+        redirect_to root_path
     else
         flash[:danger] = "用户名或密码错误！"
         render 'new'

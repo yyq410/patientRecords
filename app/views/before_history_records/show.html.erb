@@ -1,0 +1,13 @@
+<%= form_for @beforeHistory, url: edit_current_history_record_before_history_record_path(@current_history_record), :method=>:post do |f|%>
+<%= render :partial => "form", locals: {:f => f}%>
+<%= f.submit "编辑既往史,家族史,用药史,个人史", class:"btn btn-success btn-lg" %>
+<% end %>
+
+<%= link_to "查看神经查体", before_history_record_nervous_system_path(@beforeHistory), class:"btn btn-lg btn-link"%>
+
+<% content_for :side_bar do %>
+    <%= render "shared/sidebar"%>
+<% end %>
+<% content_for :side_bar2 do %>
+    <%= render partial:"beforeList"%>
+<% end %>
