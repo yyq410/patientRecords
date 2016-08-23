@@ -28,6 +28,10 @@ class NervousSystemsController < ApplicationController
     def edit
         @before_history_record = BeforeHistoryRecord.find(params[:before_history_record_id])
         @nervousSystem = @before_history_record.nervous_system
+        if @nervousSystem.nil?
+            flash[:error] = "神经查体没有录入"
+            redirect_to new_before_history_record_nervous_system_url(@before_history_record)
+        end 
     end 
 
     def update
@@ -35,7 +39,7 @@ class NervousSystemsController < ApplicationController
         @nervousSystem = @before_history_record.nervous_system
         if @nervousSystem.update(params_nervous)
             flash[:success] = "神经查体更新成功~"
-            redirect_to edit_nervous_system_assist_check_url(@before_history_record), :method => :post
+            redirect_to edit_nervous_system_assist_check_url(@nervousSystem), :method => :post
         else
             flash[:error] = "更新失败!"
             render 'edit'

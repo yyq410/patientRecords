@@ -2,7 +2,7 @@
 
 <%= form_for @currentHistory, :url => patient_current_history_record_path(@patient, @currentHistory), :method => :patch do |f| %>
     <%= render :partial => "form", locals: {:f => f}%>
-    <%= f.submit "修改病历", class:"btn btn-success btn-lg"%>
+    <%= f.submit "更新现病史", class:"btn btn-success btn-lg"%>
 <% end %>
 
 <% content_for :side_bar do%>

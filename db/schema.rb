@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160816074823) do
+ActiveRecord::Schema.define(version: 20160823025431) do
 
   create_table "assist_checks", force: :cascade do |t|
     t.integer  "nervous_system_id"
@@ -405,6 +405,10 @@ ActiveRecord::Schema.define(version: 20160816074823) do
     t.string   "weaknessMore"
     t.string   "pissFastMore"
     t.string   "pissNotEndMore"
+    t.string   "pissAddText"
+    t.string   "smileBigText"
+    t.integer  "recordAge"
+    t.string   "recordProcess"
   end
 
   create_table "doctors", force: :cascade do |t|

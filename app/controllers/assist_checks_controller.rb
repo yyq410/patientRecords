@@ -20,6 +20,10 @@ class AssistChecksController < ApplicationController
     def edit
         @nervous_system = NervousSystem.find(params[:nervous_system_id])
         @assistCheck = @nervous_system.assist_check
+        if @assistCheck.nil?
+            flash[:error] = "辅助检查和拟诊没有录入!"
+            redirect_to new_nervous_system_assist_check_url(@nervous_system)
+        end 
     end 
 
     def show

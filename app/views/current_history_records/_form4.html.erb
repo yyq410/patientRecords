@@ -1,0 +1,128 @@
+<button class="btn btn-lg btn-warning">辅助检查</button>
+<table class="table table-condensed">
+<tr>
+        <div class="form-group">
+            <td>     <%= f.label :epenSmall, "小脑萎缩", style:"font-size:20px", class:"btn-info", id:"feature82"%> </td>
+            <td>                <%= f.radio_button :epenSmall, 0  %> 是 
+                <%= f.radio_button :epenSmall, 1  %> 否
+                <%= f.radio_button :epenSmall, 2%> 未知<br/> </td>
+                <td> <%= f.label "萎缩情况"%>
+            <%= f.select :epenSmallScale,options_for_select({"轻度"=>1, "中度"=>2,"重度"=>3}, @assistCheck.epenSmallScale) ,{include_blank:true} , class:"form-control"%> </td>
+                <td>    <%= f.label "部位"%>
+            <%= f.text_field :epenSmallPosition, class:"form-control"%></td>
+       </div>
+</tr>
+<tr>
+        <div class="form-group">
+            <td>  <%= f.label :stemSmall, "脑干萎缩", style:"font-size:20px", class:"btn-info", id:"feature83"%> </td>
+            <td> <%= f.radio_button :stemSmall, 0 %> 是
+    <%= f.radio_button :stemSmall, 1%> 否
+    <%= f.radio_button :stemSmall, 2%> 未知<br/> </td>
+    <td>    <%= f.label "萎缩情况"%>
+<%= f.select :stemSmallScale,options_for_select({"轻度"=>1, "中度"=>2,"重度"=>3}, @assistCheck.stemSmallScale) ,{include_blank:true} , class:"form-control"%> </td>
+    <td><%= f.label "部位"%>
+    <%= f.text_field :stemSmallPosition, class:"form-control"%></td>
+       </div>
+
+</tr> 
+<tr>
+        <div class="form-group">
+            <td>    <%= f.label :cortexSmall, "大脑皮层萎缩", style:"font-size:20px", class:"btn-info", id:"feature84"%> </td>
+            <td> <%= f.radio_button :cortexSmall, 0 %> 是
+    <%= f.radio_button :cortexSmall, 1%> 否
+    <%= f.radio_button :cortexSmall, 2%> 未知<br/></td>
+    <td><%= f.label "萎缩情况"%>
+<%= f.select :cortexSmallScale,options_for_select({"轻度"=>1, "中度"=>2,"重度"=>3}, @assistCheck.cortexSmallScale) ,{include_blank:true} , class:"form-control"%></td>
+        </div>
+</tr>
+<tr>
+        <div class="form-group">
+            <td> <%= f.label :albaException, "白质异常", style:"font-size:20px", class:"btn-info", id:"feature85"%> </td>
+           <td>    <%= f.radio_button :albaException, 0 %> 是
+    <%= f.radio_button :albaException, 1%> 否
+    <%= f.radio_button :albaException, 2%> 未知<br/> </td>
+    <td> <%= f.label "异常情况"%>
+<%= f.select :albaExceptionScale,options_for_select({"轻度"=>1, "中度"=>2,"重度"=>3}, @assistCheck.albaExceptionScale) ,{include_blank:true} , class:"form-control"%></td>
+       </div>
+</tr> 
+<tr>
+        <div class="form-group">
+     <td>         <%= f.label :thyroidIndicator, "甲状腺功能指标", style:"font-size:20px", class:"btn-info", id:"feature86"%></td>
+     <td><%= f.radio_button :thyroidIndicator, 0 %> 是
+    <%= f.radio_button :thyroidIndicator, 1%> 否
+    <%= f.radio_button :thyroidIndicator, 2%> 未知<br/></td>
+<td>    <%= f.label "详细情况"%>
+    <%= f.text_field :thyroidIndicatorText, class:"form-control"%></td>
+        </div>
+</tr>
+        <div class="form-group">
+            <td>       <%= f.label :electrolyte, "电解质", style:"font-size:20px", class:"btn-info", id:"feature87"%></td>
+            <td><%= f.radio_button :electrolyte, 0 %> 是
+    <%= f.radio_button :electrolyte, 1%> 否
+    <%= f.radio_button :electrolyte, 2%> 未知<br/></td>
+<td>    <%= f.label "详细情况"%>
+    <%= f.text_field :electrolyteWords, class:"form-control"%></td>
+</div>
+</tr>
+<tr>
+        <div class="form-group">
+            <td>            <%= f.label :bloodFat, "血脂相关指标", style:"font-size:20px", class:"btn-info", id:"feature88"%></td>
+            <td>    <%= f.radio_button :bloodFat, 0 %> 是
+    <%= f.radio_button :bloodFat, 1%> 否
+    <%= f.radio_button :bloodFat, 2%> 未知<br/></td>
+<td>    <%= f.label "详细情况"%>
+    <%= f.text_field :bloodFatText, class:"form-control"%></td>
+       </div>
+</tr>
+<tr>
+        <div class="form-group">
+            <td>            <%= f.label :bladderPiss, "膀胱残余尿量", style:"font-size:20px", class:"btn-info", id:"feature89"%></td>
+                <td>    <%= f.radio_button :bladderPiss, 0 %> 是
+    <%= f.radio_button :bladderPiss, 1%> 否
+    <%= f.radio_button :bladderPiss, 2%> 未知<br/> </td>
+    <td>    <%= f.label "余量"%>
+<%= f.number_field :bladderNumber, in:0..9999, step:1, class:"form-control"%></td>
+<td>    <%= f.label "部位"%>
+    <%= f.text_field :bladderPosition, class:"form-control"%></td>
+       </div>
+</tr>
+<tr>
+        <div class="form-group">
+            <td>            <%= f.label :ceruloplasmin, "铜蓝蛋白", style:"font-size:20px", class:"btn-info", id:"feature90"%> </td>
+            <td>    <%= f.radio_button :ceruloplasmin, 0 %> 是
+    <%= f.radio_button :ceruloplasmin, 1%> 否
+    <%= f.radio_button :ceruloplasmin, 2%> 未知<br/></td>
+    <td><%= f.label "详细情况"%>
+<%= f.text_field :ceruloplasminText, class:"form-control"%></td>
+       </div>
+</tr>
+<tr>
+        <div class="form-group">
+            <td>            <%= f.label :otherIndicators, "其他指标", style:"font-size:20px", class:"btn-info", id:"feature91"%></td>
+                <td>    <%= f.radio_button :otherIndicators, 0 %> 是
+    <%= f.radio_button :otherIndicators, 1%> 否
+    <%= f.radio_button :otherIndicators, 2%> 未知<br/></td>
+    <td>    <%= f.label "详细情况"%>
+<%= f.text_field :otherIndicatorsText, class:"form-control"%></td>
+       </div>
+</tr>
+</table>
+<div class="form-group">
+    <%= f.label "补充说明", style:"font-size:20px", class:"btn btn-info", id:"feature92"%>
+    <%= f.text_area :extraAssistWords, class:"form-control", rows:5%>
+</div>
+   
+<table class="table table-condensed">
+    <tr><th><button class="btn btn-lg btn-danger" id="feature93">拟诊</button></th><th><button class="btn btn-lg btn-primary" id="feature94">医嘱</button></th></tr>
+
+    <tr><td>
+    <%= f.label "可能性"%>
+    <%= f.select :msaProb,options_for_select({"不可能"=>1, "可能"=>2,"很可能"=>3, "肯定"=> 4}, @assistCheck.msaProb) ,{include_blank:true} , class:"form-control"%>
+    <%= f.label "MSA类型"%>
+    <%= f.select :msaType,options_for_select({"MSA-C"=>0, "MSA-P"=>1,"MSA-A"=>2, "MSA-C+P"=>3}, @assistCheck.msaType) ,{include_blank:true} , class:"form-control"%>
+        
+    </td>
+    <td colspan="2">
+        <%= f.text_area :doctorAdvice, class:"form-control", rows:5%>
+    </td></tr>
+</table>

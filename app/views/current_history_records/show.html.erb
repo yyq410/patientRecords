@@ -1,15 +1,48 @@
 <%= render :partial => "patient_info", locals: {:f => @patient} %>
 
-<%= form_for @currentHistory, url: edit_patient_current_history_record_path(@patient, @currentHistory), :method => :post do |f|%>
-    <%= render :partial => "form", locals: {:f => f}%>
-    <%= f.submit "编辑现病史", class:"btn btn-success btn-lg" %>
-<% end %>
-    <%= link_to "查看既往史,用药史,家族史和个人史", current_history_record_before_history_record_path(@currentHistory),class:"btn btn-lg btn-link"%>
+<div>
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><%= link_to "现病史", "#page1", "aria-controls":"page1", role:"tab", "data-toggle":"tab" %></li>
+        <li role="presentation"><%= link_to "既往史、用药史、家族史和个人史", "#page2", "aria-controls":"page2", role:"tab", "data-toggle":"tab" %></li>
+        <li role="presentation"><%= link_to "神经查体", "#page3", "aria-controls":"page3", role:"tab", "data-toggle":"tab" %></li>
+        <li role="presentation"><%= link_to "辅助诊断和拟诊", "#page4", "aria-controls":"page4", role:"tab", "data-toggle":"tab" %></li>
+    </ul>
+    <div class="tab-content">
+        <div  role="tabpanel" class="tab-pane active" id="page1">
+            <%= form_for @currentHistory, url: edit_patient_current_history_record_path(@patient, @currentHistory), :method => :post do |f|%>
+                <%= render :partial => "form1", locals: {:f => f}%>
+                <%= f.submit "编辑现病史", class:"btn btn-success btn-lg" %>
+            <% end %>
+        </div>
+        <div  role="tabpane2" class="tab-pane" id="page2">
+            <% if @beforeHistory %>
+                <%= form_for @beforeHistory, url: edit_current_history_record_before_history_record_path(@currentHistory), :method=>:post do |f|%>
+                <%= render :partial => "form2", locals: {:f => f}%>
+                <%= f.submit "编辑既往史,家族史,用药史,个人史", class:"btn btn-success btn-lg" %>
+                <% end %>
+            <% end %>
+        </div>
+        <div  role="tabpane3" class="tab-pane" id="page3">
+            <% if !@nervousSystem.nil? %>
+                <%= form_for @nervousSystem, url: edit_before_history_record_nervous_system_path(@beforeHistory), :method=>:post do |f|%>
+                <%= render :partial => "form3", locals: {:f => f}%>
+                <%= f.submit "编辑神经查体", class:"btn btn-success btn-lg" %>
+                <% end %>
+            <% end %>
+        </div>
+        <div  role="tabpane4" class="tab-pane" id="page4">
+            <% if !@assistCheck.nil? %>
+                <%= form_for @assistCheck, url: edit_nervous_system_assist_check_path(@nervousSystem), :method=>:post do |f|%>
+                <%= render :partial => "form4", locals: {:f => f}%>
+                <%= f.submit "编辑辅助检查和拟诊", class:"btn btn-success btn-lg" %>
+                <% end %>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+<!--   <%= link_to "查看既往史,用药史,家族史和个人史", current_history_record_before_history_record_path(@currentHistory),class:"btn btn-lg btn-link"%> -->
 
 <% content_for :side_bar do %>
     <%= render "shared/sidebar"%>
-<% end %>
-
-<% content_for :side_bar2 do%>
-    <%= render :partial => "currentList"%> 
 <% end %>

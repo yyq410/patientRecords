@@ -34,7 +34,13 @@ class CurrentHistoryRecordsController < ApplicationController
         if(@currentHistory.update(params_current))
             flash[:success] = "病历修改成功~"
             @beforeHistory = @currentHistory.before_history_record
-            redirect_to edit_current_history_record_before_history_record_url(@currentHistory)
+            if !@beforeHistory.nil?
+                flash[:info] = "继续编辑既往史~"
+                redirect_to edit_current_history_record_before_history_record_url(@currentHistory)
+            else
+                flash[:danger] = "既往史等没有输入!"
+                redirect_to new_current_history_record_before_history_record_url(@currentHistory)
+            end 
         else 
             flash[:error] = "病历修改失败!"
             render 'edit'
@@ -44,6 +50,9 @@ class CurrentHistoryRecordsController < ApplicationController
     def show
         @patient = Patient.find(params[:patient_id])
         @currentHistory = @patient.current_history_records.find(params[:id])
+        @beforeHistory = (@currentHistory.nil? ? nil : @currentHistory.before_history_record)
+        @nervousSystem = (@beforeHistory.nil? ? nil : @beforeHistory.nervous_system)
+        @assistCheck = (@nervousSystem.nil? ? nil : @nervousSystem.assist_check)
     end 
 
     def destroy
@@ -62,6 +71,8 @@ class CurrentHistoryRecordsController < ApplicationController
         def params_current
             params.require(:current_history_record).permit(
       :recordTime,
+      :recordAge,
+      :recordProcess,
       :docName,
       :weigthLoss,
       :weightLossDuring,
